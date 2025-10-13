@@ -57,7 +57,7 @@ body {
 .logo-icon {
     width: 2.5rem;
     height: 2.5rem;
-    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    background: linear-gradient(135deg, #151e2c 0%, #8b5cf6 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -69,7 +69,8 @@ body {
 .logo-text {
     font-size: 1.25rem;
     font-weight: 700;
-    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    /* linear-gradient(135deg, #151e2c 0%, #8b5cf6 100%) */
+    background: linear-gradient(135deg, #151e2c 0%, #8b5cf6 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -93,7 +94,7 @@ body {
 
 .nav-link:hover,
 .nav-link.active {
-    color: #3b82f6;
+    color: #151e2c;
     background: rgba(59, 130, 246, 0.1);
 }
 
@@ -134,7 +135,7 @@ body {
 
 .badge {
     display: inline-block;
-    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    background: linear-gradient(135deg, #151e2c 0%, #8b5cf6 100%);
     color: white;
     padding: 0.5rem 1rem;
     border-radius: 2rem;
@@ -151,7 +152,7 @@ body {
 }
 
 .gradient-text {
-    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    background: linear-gradient(135deg, #151e2c 0%, #8b5cf6 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -193,7 +194,7 @@ body {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    background: linear-gradient(135deg, #151e2c 0%, #8b5cf6 100%);
     color: white;
     box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
 }
@@ -205,12 +206,12 @@ body {
 
 .btn-outline {
     background: transparent;
-    color: #3b82f6;
-    border: 2px solid #3b82f6;
+    color: #151e2c;
+    border: 2px solid #151e2c;
 }
 
 .btn-outline:hover {
-    background: #3b82f6;
+    background: #151e2c;
     color: white;
     transform: translateY(-2px);
 }
@@ -306,7 +307,7 @@ body {
 .section-divider {
     width: 6rem;
     height: 0.25rem;
-    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    background: linear-gradient(135deg, #151e2c 0%, #8b5cf6 100%);
     margin: 0 auto 2rem;
     border-radius: 0.125rem;
 }
@@ -357,7 +358,7 @@ body {
 
 .card-icon {
     font-size: 2rem;
-    color: #3b82f6;
+    color: #151e2c;
 }
 
 .card-title {
@@ -407,7 +408,7 @@ body {
 }
 
 .blue-gradient {
-    background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+    background: linear-gradient(135deg, #151e2c 0%, #06b6d4 100%);
 }
 
 .green-gradient {
@@ -434,7 +435,7 @@ body {
 }
 
 .project-card[data-color="blue"] .project-icon {
-    background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+    background: linear-gradient(135deg, #151e2c 0%, #06b6d4 100%);
 }
 
 .project-card[data-color="green"] .project-icon {
@@ -471,7 +472,7 @@ body {
 
 .transparency-icon {
     font-size: 4rem;
-    color: #3b82f6;
+    color: #151e2c;
     margin-bottom: 1.5rem;
 }
 
@@ -546,7 +547,7 @@ body {
 }
 
 .contact-icon.blue {
-    background: #3b82f6;
+    background: #151e2c;
 }
 
 .contact-icon.green {
@@ -590,7 +591,7 @@ body {
 .social-link i {
     font-size: 2rem;
     margin-bottom: 0.5rem;
-    color: #3b82f6;
+    color: #151e2c;
 }
 
 .social-link.instagram:hover i {
