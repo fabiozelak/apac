@@ -827,7 +827,7 @@ body {
 /* Portfolio Hero Section */
 .portfolio-hero {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    padding: 120px 0 80px;
+    padding: 120px 0 40px;
     text-align: center;
     color: white;
     position: relative;
@@ -1247,10 +1247,10 @@ body {
     border-bottom: none;
 }
 
-.modal-achievements li::before {
-    /* content: '🏆'; */
-    /* margin-right: 0.5rem; */
-}
+/* .modal-achievements li::before {
+    content: '🏆';
+    margin-right: 0.5rem;
+} */
 
 /* Animations */
 @keyframes fadeIn {
