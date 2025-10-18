@@ -420,7 +420,7 @@ body {
 }
 
 .project-icon {
-    font-size: 3rem;
+    font-size: 2.5rem;
     color: white;
     background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%);
     width: 4rem;
@@ -429,8 +429,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: -2rem auto 1.5rem;
+    margin: 0rem 0.5rem 1.5rem;
     transition: all 0.3s ease;
+    padding: 12px;
 }
 
 .project-card[data-color="blue"] .project-icon {
