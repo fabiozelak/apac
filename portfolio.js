@@ -324,7 +324,7 @@ class PortfolioManager {
         } else if (text.includes('3º lugar') || text.includes('terceiro lugar') || text.includes('3° lugar')) {
             return { icon: '🥉', class: 'medal-bronze' };
         } else {
-            return { icon: '🏅', class: 'medal-other' };
+            return { icon: '', class: 'medal-other' };
         }
     }
 
