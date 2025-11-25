@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "nome": "Estatuto Social APAC (exemplo)",
+    "categoria": "Estatutos",
+    "data": "2024-01-15",
+    "descricao": "Documento que regulamenta a organização e funcionamento da Associação dos Pais e Amigos dos Patinadores Artísticos de Curitiba.",
+    "arquivo": "documentos/estatuto-social-apac.pdf",
+    "tamanho": "245 KB",
+    "tipo": "PDF"
+  },
+  {
+    "id": 2,
+    "nome": "Ata de Fundação (exemplo)",
+    "categoria": "Atas",
+    "data": "2020-03-22",
+    "descricao": "Ata de fundação da APAC, registrando a criação da associação e seus membros fundadores.",
+    "arquivo": "documentos/ata-fundacao.pdf",
+    "tamanho": "128 KB",
+    "tipo": "PDF"
+  },
+  {
+    "id": 3,
+    "nome": "Balancete 2025",
+    "categoria": "Relatórios",
+    "data": "2025-11-25",
+    "descricao": "Balancete das contas do ano de 2025",
+    "arquivo": "documentos/relatorios/Balancete_2025_assinado.pdf",
+    "tamanho": "151 KB",
+    "tipo": "PDF"
+  },
+  {
+    "id": 4,
+    "nome": "Balanço 2025",
+    "categoria": "Relatórios",
+    "data": "2025-11-25",
+    "descricao": "Balanço Financeiro 2025",
+    "arquivo": "documentos/relatorios/Balanco_2025_assinado.pdf",
+    "tamanho": "152 KB",
+    "tipo": "PDF"
+  },
+  {
+    "id": 5,
+    "nome": "D.R.E. 2025",
+    "categoria": "Atas",
+    "data": "2025-11-25",
+    "descricao": "Demosntração do Resultado do Eercício em 31/10/2025",
+    "arquivo": "documentos/relatorios/D._R._E._2025_assinado.pdf",
+    "tamanho": "145 KB",
+    "tipo": "PDF"
+  },
+  {
+    "id": 6,
+    "nome": "Regulamento de Competições (exemplo)",
+    "categoria": "Regulamentos",
+    "data": "2024-01-10",
+    "descricao": "Regulamento que estabelece as normas para a participação em competições de patinação artística.",
+    "arquivo": "documentos/regulamento-competicoes.pdf",
+    "tamanho": "289 KB",
+    "tipo": "PDF"
+  },
+  {
+    "id": 7,
+    "nome": "Código de Conduta (exemplo)",
+    "categoria": "Regulamentos",
+    "data": "2023-09-05",
+    "descricao": "Código de conduta que orienta o comportamento de membros, atletas e colaboradores da APAC.",
+    "arquivo": "documentos/codigo-conduta.pdf",
+    "tamanho": "198 KB",
+    "tipo": "PDF"
+  },
+  {
+    "id": 8,
+    "nome": "Plano Estratégico 2024-2026 (exemplo)",
+    "categoria": "Planejamento",
+    "data": "2024-02-28",
+    "descricao": "Plano estratégico da APAC para os próximos três anos, com objetivos e metas.",
+    "arquivo": "documentos/plano-estrategico-2024-2026.pdf",
+    "tamanho": "356 KB",
+    "tipo": "PDF"
+  },
+  {
+    "id": 9,
+    "nome": "Política de Privacidade (exemplo)",
+    "categoria": "Editais",
+    "data": "2024-05-01",
+    "descricao": "Política de privacidade e proteção de dados pessoais dos membros da APAC.",
+    "arquivo": "documentos/politica-privacidade.pdf",
+    "tamanho": "87 KB",
+    "tipo": "PDF"
+  },
+  {
+    "id": 10,
+    "nome": "Relatório de Atividades 2024 (exemplo)",
+    "categoria": "Relatórios",
+    "data": "2024-11-30",
+    "descricao": "Relatório detalhado das atividades desenvolvidas pela APAC durante o ano de 2024.",
+    "arquivo": "documentos/relatorio-atividades-2024.pdf",
+    "tamanho": "623 KB",
+    "tipo": "PDF"
+  },
+  {
+    "id": 11,
+    "nome": "Calendário de Eventos 2025 (exemplo)",
+    "categoria": "Calendários",
+    "data": "2024-12-01",
+    "descricao": "Calendário com todas as competições e eventos previstos para 2025.",
+    "arquivo": "documentos/calendario-eventos-2025.pdf",
+    "tamanho": "145 KB",
+    "tipo": "PDF"
+  },
+  {
+    "id": 12,
+    "nome": "Ata da Assembleia Geral 2023 (exemplo)",
+    "categoria": "Atas",
+    "data": "2023-06-15",
+    "descricao": "Ata da Assembleia Geral Ordinária realizada em 15 de junho de 2023.",
+    "arquivo": "documentos/ata-assembleia-2023.pdf",
+    "tamanho": "134 KB",
+    "tipo": "PDF"
+  }
+]
