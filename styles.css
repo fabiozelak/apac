@@ -535,6 +535,7 @@ body {
 }
 
 .contact-icon {
+        padding: 0.8rem;
     font-size: 1.5rem;
     width: 3rem;
     height: 3rem;
