@@ -149,7 +149,9 @@ class DocumentsManager {
         const icon = this.getDocumentIcon(document.tipo);
         const typeClass = document.tipo.toLowerCase();
         const formattedDate = this.formatDate(document.data);
-        
+        if (document.hidden === "true") {
+            return '';
+        } else {
         return `
             <div class="document-item ${typeClass}">
                 <div class="document-info">
@@ -179,6 +181,7 @@ class DocumentsManager {
                 </div>
             </div>
         `;
+        }
     }
 
     getDocumentIcon(type) {
