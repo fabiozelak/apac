@@ -16,6 +16,26 @@
 </head>
 
 <body>
+    <!-- Toast Container -->
+    <link rel="stylesheet" href="toast.css">
+    <div id="toast-iframe" class="toast hidden">
+        <div class="toast-header">
+            <span>Atenção Associados!</span>
+            <button class="close-btn" onclick="closeToast()">✕</button>
+        </div>
+        <div class="text">
+            <p>
+                Assembleia Geral Ordinária agendada para o dia 31 de janeiro 2026 às 17h via Google Meet.
+            </p>
+            <br>
+            <p>
+                <a href="documentos/editais/convocacao_assembleia_geral_1_2026.pdf">Clique aqui para visualizar o
+                    edital.</a>
+            </p>
+
+        </div>
+    </div>
+    <script src="toast.js"></script>
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
@@ -45,6 +65,7 @@
         </div>
     </nav>
 
+
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
@@ -59,9 +80,10 @@
                     </h1>
                     <h2 class="hero-subtitle">dos Patinadores Artísticos de Curitiba</h2>
                     <p class="hero-description" style="text-align: justify;">
-                        Unidos pela paixão do esporte, trabalhamos para fortalecer a patinação artística
-                        através da cooperação, apoio mútuo e desenvolvimento de nossos atletas em todas
-                        as etapas de sua jornada esportiva.
+                        Unidos pela paixão ao esporte, nossa associação atua no fortalecimento da patinação artística
+                        por meio da cooperação e do apoio mútuo. Dedicamos nossos esforços ao desenvolvimento técnico e
+                        humano de nossos atletas, acompanhando-os com excelência em todas as etapas de sua jornada
+                        esportiva.
                     </p>
                     <div class="hero-buttons">
                         <button class="btn btn-primary" onclick="scrollToSection('quem-somos')">
@@ -129,10 +151,17 @@
                     </div>
                     <div class="card-content" style="text-align: justify;">
                         <p>
-A APAC Curitiba acredita que a patinação artística é uma poderosa ferramenta de transformação social e desenvolvimento humano. Nossa comunidade vai muito além dos atletas de alto rendimento; ela engloba pais, amigos, voluntários, a Escola Curitibana de Patinação Artística (ECPA) e, principalmente, a população de Curitiba.
+                            A APAC Curitiba acredita que a patinação artística é uma poderosa ferramenta de
+                            transformação social e desenvolvimento humano. Nossa comunidade vai muito além dos atletas
+                            de alto rendimento; ela engloba pais, amigos, voluntários, a Escola Curitibana de Patinação
+                            Artística (ECPA) e, principalmente, a população de Curitiba.
                         </p>
                         <p>
-                            A comunidade APAC é um ambiente de união e apoio mútuo, onde o sucesso individual de cada atleta é celebrado como uma vitória coletiva. Por meio de apresentações, shows anuais e projetos como o "Patinadores do Futuro", buscamos inspirar a cidade, reforçando o valor do esporte, da arte e da dedicação. Somos uma comunidade que trabalha lado a lado com o poder público e parceiros privados para levar a patinação artística a todos os cantos de Curitiba.
+                            A comunidade APAC é um ambiente de união e apoio mútuo, onde o sucesso individual de cada
+                            atleta é celebrado como uma vitória coletiva. Por meio de apresentações, shows anuais e
+                            projetos como o "Patinadores do Futuro", buscamos inspirar a cidade, reforçando o valor do
+                            esporte, da arte e da dedicação. Somos uma comunidade que trabalha lado a lado com o poder
+                            público e parceiros privados para levar a patinação artística a todos os cantos de Curitiba.
                         </p>
                     </div>
                 </div>
@@ -160,7 +189,7 @@ A APAC Curitiba acredita que a patinação artística é uma poderosa ferramenta
                     <div class="project-content">
                         <h3 class="project-title">Projeto Social</h3>
                         <p class="project-description">
-                            Atendimento da Arena de Patinação, Participação das Campanhas da prefeitura de Curitiba. 
+                            Atendimento da Arena de Patinação, Participação das Campanhas da prefeitura de Curitiba.
                         </p>
                     </div>
                 </div>
@@ -184,7 +213,8 @@ A APAC Curitiba acredita que a patinação artística é uma poderosa ferramenta
                     <div class="project-content">
                         <h3 class="project-title">Projeto Educacional</h3>
                         <p class="project-description">
-                            Cursos e treinamentos com profissionais de renome nacional e internacional, focados no desenvolvimento integral dos atletas.
+                            Cursos e treinamentos com profissionais de renome nacional e internacional, focados no
+                            desenvolvimento integral dos atletas.
                         </p>
                     </div>
                 </div>
@@ -260,7 +290,8 @@ A APAC Curitiba acredita que a patinação artística é uma poderosa ferramenta
                         <p class="contact-subtitle">Acompanhe nossas atividades e novidades</p>
                     </div>
                     <div class="social-links">
-                        <a href="https://www.instagram.com/apac.patinacao.curitiba/" target="_blank" class="social-link instagram">
+                        <a href="https://www.instagram.com/apac.patinacao.curitiba/" target="_blank"
+                            class="social-link instagram">
                             <i class="fab fa-instagram"></i>
                             <span>Instagram</span>
                         </a>
@@ -268,7 +299,8 @@ A APAC Curitiba acredita que a patinação artística é uma poderosa ferramenta
                             <i class="fab fa-youtube"></i>
                             <span>YouTube</span>
                         </a>
-                        <a href="https://www.facebook.com/apac.patinacao.curitiba" target="_blank" class="social-link facebook">
+                        <a href="https://www.facebook.com/apac.patinacao.curitiba" target="_blank"
+                            class="social-link facebook">
                             <i class="fab fa-facebook"></i>
                             <span>Facebook</span>
                         </a>

@@ -1,9 +1,20 @@
 [
-  {
+    {
     "id": 1,
+    "nome": "Edital de convocação Assembléia Geral 1ª 2026",
+    "categoria": "Editais",
+    "data": "2025-12-28",
+    "descricao": "Apresentação, discussão e deliberação sobre a Programação de Atividades da APAC para o ano de 2026; discussão e definição dos valores da anuidade dos associados, conforme competência da Diretoria e apreciação da Assembleia Geral; apreciação de novos associados; e assuntos gerais de interesse da Associação.",
+    "arquivo": "documentos/editais/convocacao_assembleia_geral_1_2026.pdf",
+    "tamanho": "397 KB",
+    "tipo": "PDF",
+    "hidden": "false"
+  },
+  {
+    "id": 2,
     "nome": "Estatuto Social APAC",
     "categoria": "Estatutos",
-    "data": "2090-11-26",
+    "data": "2025-11-26",
     "descricao": "Documento que regulamenta a organização e funcionamento da Associação dos Pais e Amigos dos Patinadores Artísticos de Curitiba.",
     "arquivo": "documentos/estatutos/estatuto_social_apac_2025.pdf",
     "tamanho": "174 KB",
@@ -11,7 +22,7 @@
     "hidden": "false"
   },
   {
-    "id": 2,
+    "id": 3,
     "nome": "Ata de Fundação (exemplo)",
     "categoria": "Atas",
     "data": "2020-03-22",
@@ -22,7 +33,7 @@
     "hidden": "true"
   },
   {
-    "id": 3,
+    "id": 4,
     "nome": "Balancete 2025",
     "categoria": "Relatórios",
     "data": "2025-11-25",
@@ -33,7 +44,7 @@
     "hidden": "false"
   },
   {
-    "id": 4,
+    "id": 5,
     "nome": "Balanço 2025",
     "categoria": "Relatórios",
     "data": "2025-11-25",
@@ -44,7 +55,7 @@
     "hidden": "false"
   },
   {
-    "id": 5,
+    "id": 6,
     "nome": "D.R.E. 2025",
     "categoria": "Atas",
     "data": "2025-11-25",
@@ -53,17 +64,6 @@
     "tamanho": "145 KB",
     "tipo": "PDF",
     "hidden": "false"
-  },
-  {
-    "id": 6,
-    "nome": "Regulamento de Competições (exemplo)",
-    "categoria": "Regulamentos",
-    "data": "2024-01-10",
-    "descricao": "Regulamento que estabelece as normas para a participação em competições de patinação artística.",
-    "arquivo": "documentos/regulamento-competicoes.pdf",
-    "tamanho": "289 KB",
-    "tipo": "PDF",
-    "hidden": "true"
   },
   {
     "id": 7,
