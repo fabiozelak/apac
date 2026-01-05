@@ -1732,6 +1732,43 @@ body {
     color: #1e293b;
 }
 
+.apac-banner {
+    width: 100%;
+    background: linear-gradient(135deg, #0b3c5d, #145a86);
+    padding: 40px 20px;
+    box-sizing: border-box;
+}
+
+.apac-banner-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.apac-banner-text {
+    color: #ffffff;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.apac-banner-button {
+    display: inline-block;
+    background-color: #ffffff;
+    color: #0b3c5d;
+    padding: 14px 28px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.apac-banner-button:hover {
+    background-color: #f1f1f1;
+    transform: translateY(-2px);
+}
+
+
 /* Responsive Design for Documents */
 @media (max-width: 768px) {
     .documents-hero .hero-title {
@@ -1810,3 +1847,15 @@ body {
         font-size: 0.9rem;
     }
 }
+
+@media (max-width: 600px) {
+    .apac-banner-text {
+        font-size: 1.05rem;
+    }
+
+    .apac-banner-button {
+        width: 100%;
+        padding: 16px;
+    }
+}
+
