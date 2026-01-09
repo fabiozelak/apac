@@ -14,7 +14,7 @@ class DocumentsManager {
 
     async init() {
         await this.loadDocuments();
-        this.sortDocuments('data-desc'); // Ordenar por data (mais novo para mais antigo) por padrão
+        this.sortDocuments('id-desc'); // Ordenar por data (mais novo para mais antigo) por padrão
         this.setupEventListeners();
         this.populateFilters();
         this.renderDocuments();
@@ -224,6 +224,16 @@ class DocumentsManager {
             // Ordenar por nome (Z-A)
             this.filteredDocuments.sort((a, b) => {
                 return b.nome.localeCompare(a.nome);
+            });
+        } else if (sortBy === 'id-desc') {
+            // Ordenar por ID (mais novo para mais antigo)
+            this.filteredDocuments.sort((a, b) => {
+                return b.id - a.id;
+            });
+        } else if (sortBy === 'id-asc') {
+            // Ordenar por ID (mais antigo para mais novo)
+            this.filteredDocuments.sort((a, b) => {
+                return a.id - b.id;
             });
         }
     }

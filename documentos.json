@@ -1,17 +1,6 @@
 [
-    {
-    "id": 1,
-    "nome": "Edital de convocação Assembléia Geral 1ª 2026",
-    "categoria": "Editais",
-    "data": "2025-12-28",
-    "descricao": "Apresentação, discussão e deliberação sobre a Programação de Atividades da APAC para o ano de 2026; discussão e definição dos valores da anuidade dos associados, conforme competência da Diretoria e apreciação da Assembleia Geral; apreciação de novos associados; e assuntos gerais de interesse da Associação.",
-    "arquivo": "documentos/editais/convocacao_assembleia_geral_1_2026.pdf",
-    "tamanho": "397 KB",
-    "tipo": "PDF",
-    "hidden": "false"
-  },
   {
-    "id": 2,
+    "id": 1,
     "nome": "Estatuto Social APAC",
     "categoria": "Estatutos",
     "data": "2025-11-26",
@@ -22,7 +11,29 @@
     "hidden": "false"
   },
   {
+    "id": 2,
+    "nome": "Edital de convocação para a 1ª Assembléia Geral de 2026",
+    "categoria": "Editais",
+    "data": "2025-12-28",
+    "descricao": "Apresentação, discussão e deliberação sobre a Programação de Atividades da APAC para o ano de 2026; discussão e definição dos valores da anuidade dos associados, conforme competência da Diretoria e apreciação da Assembleia Geral; apreciação de novos associados; e assuntos gerais de interesse da Associação.",
+    "arquivo": "documentos/editais/convocacao_assembleia_geral_1_2026.pdf",
+    "tamanho": "397 KB",
+    "tipo": "PDF",
+    "hidden": "false"
+  },
+  {
     "id": 3,
+    "nome": "Relatórios Financeiros 2025 -  Final",
+    "categoria": "Financeiro",
+    "data": "2025-11-25",
+    "descricao": "Balancete das contas do ano de 2025",
+    "arquivo": "documentos/financeiro/financerio-final-mandato-2025.zip",
+    "tamanho": "1,56 MB",
+    "tipo": "ZIP",
+    "hidden": "false"
+  },
+  {
+    "id": 4,
     "nome": "Ata de Fundação (exemplo)",
     "categoria": "Atas",
     "data": "2020-03-22",
@@ -33,26 +44,15 @@
     "hidden": "true"
   },
   {
-    "id": 4,
-    "nome": "Balancete 2025",
-    "categoria": "Relatórios",
-    "data": "2025-11-25",
-    "descricao": "Balancete das contas do ano de 2025",
-    "arquivo": "documentos/relatorios/Balancete_2025_assinado.pdf",
-    "tamanho": "151 KB",
-    "tipo": "PDF",
-    "hidden": "false"
-  },
-  {
     "id": 5,
     "nome": "Balanço 2025",
-    "categoria": "Relatórios",
+    "categoria": "Financeiro",
     "data": "2025-11-25",
     "descricao": "Balanço Financeiro 2025",
     "arquivo": "documentos/relatorios/Balanco_2025_assinado.pdf",
     "tamanho": "152 KB",
     "tipo": "PDF",
-    "hidden": "false"
+    "hidden": "true"
   },
   {
     "id": 6,
@@ -63,7 +63,7 @@
     "arquivo": "documentos/relatorios/D._R._E._2025_assinado.pdf",
     "tamanho": "145 KB",
     "tipo": "PDF",
-    "hidden": "false"
+    "hidden": "true"
   },
   {
     "id": 7,
