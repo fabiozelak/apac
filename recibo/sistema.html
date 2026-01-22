@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Recibos APAC</title>
+
+  <script>
+    if (localStorage.getItem("auth") !== "ok") {
+      window.location.href = "index.html";
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: Arial;
+      padding: 20px;
+    }
+
+    input {
+      padding: 8px;
+      width: 300px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 10px;
+      background: #003366;
+      color: #fff;
+      border: none;
+    }
+
+    #recibo {
+      width: 700px;
+      border: 2px solid #003366;
+      padding: 30px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Gerador de Recibos – APAC</h2>
+
+  <input id="referencia" placeholder="Referência"><br>
+  <input id="nome" placeholder="Nome"><br>
+  <input id="cpf" placeholder="CPF" inputmode="numeric" autocomplete="off" maxlength="14"><br>
+  <input id="valor" placeholder="Valor (ex: 150,75)" inputmode="decimal" autocomplete="off"><br>
+
+
+  <button onclick="abrirRecibo()">Gerar Recibo</button>
+
+
+  <hr>
+
+  <script src="recibo.js"></script>
+</body>
+
+</html>
