@@ -325,14 +325,14 @@
 
     <div class="container main-content">
         <!-- Filtros -->
-        <div class="filters">
+        <!-- <div class="filters">
             <button class="filter-btn active" data-filter="all">Todos</button>
             <button class="filter-btn" data-filter="atletas">Atletas</button>
             <button class="filter-btn" data-filter="competicoes">Competições</button>
             <button class="filter-btn" data-filter="financeiro">Financeiro</button>
             <button class="filter-btn" data-filter="oficiais">Documentos Oficiais</button>
             <button class="filter-btn" data-filter="relatorios">Relatórios</button>
-        </div>
+        </div> -->
 
         <!-- Grid de Documentos -->
         <div class="documents-grid" id="documentsGrid"></div>
@@ -359,20 +359,20 @@
                 filter: "atletas",
                 size: "128 KB",
                 modified: "2025-12-20",
-                type: "DOCX",
+                type: "LINK",
                 description: "Site da World Skate com as músicas para o Solo Dance 2026.",
                 url: "https://www.worldskate.org/artistic/about/regulations/category/1578-compulsory-dances-2026.html"
             },
             {
-                id: "termo-responsabilidade",
-                title: "Termo de Responsabilidade",
+                id: "arquivos",
+                title: "Regimento de Taxas 2026 – Patinação Artística",
                 category: "Atletas",
                 filter: "atletas",
                 size: "95 KB",
                 modified: "2025-11-10",
                 type: "PDF",
-                description: "Termo de responsabilidade para participação em eventos.",
-                url: null
+                description: "link do site da CSB do Regimento de Taxas 2026 – Patinação Artística.",
+                url: "https://csb.esp.br/wp-content/uploads/2026/01/20251222-PA_regimento_taxas_2026.pdf"
             },
             {
                 id: "regulamento-competicao",
@@ -526,9 +526,7 @@
 
                     <div class="doc-card-actions">
                         ${doc.url ? `
-                            <button class="btn btn-primary" onclick="window.open('${doc.url}', '_blank')">
-                                <i class="fas fa-download"></i> Download
-                            </button>
+
                             <button class="btn btn-outline" onclick="window.open('${doc.url}', '_blank')">
                                 <i class="fas fa-external-link-alt"></i> Abrir
                             </button>
