@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelos APAC - Estrutura em Árvore</title>
+
+    <!-- Exemplo de link CSS (pode trocar pela URL do CSS do site APAC) -->
+    <link rel="stylesheet" href="https://apac.esp.br/wp-content/themes/algumtema/style.css">
+
+    <style>
+        /* CSS para lista em árvore */
+        ul.tree, ul.tree ul {
+            list-style: none;
+            padding-left: 1em;
+            position: relative;
+        }
+
+        ul.tree ul {
+            margin-left: .5em;
+        }
+
+        ul.tree li {
+            margin: 0;
+            padding: .5em 0;
+            position: relative;
+        }
+
+        ul.tree li::before {
+            content: "";
+            position: absolute;
+            top: 1em;
+            left: -1em;
+            width: 1em;
+            height: 0;
+            border-top: 1px solid #ccc;
+        }
+
+        ul.tree li::after {
+            content: "";
+            position: absolute;
+            top: 1em;
+            left: -1em;
+            border-left: 1px solid #ccc;
+            height: 100%;
+        }
+
+        ul.tree li:last-child::after {
+            height: 1em;
+        }
+
+        .file-link {
+            text-decoration: none;
+            color: #0073aa;
+        }
+        .file-link:hover {
+            text-decoration: underline;
+            color: #005177;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Modelos e Arquivos APAC</h1>
+
+<ul class="tree">
+    <li>
+        <strong>Modelos</strong>
+        <ul>
+            
+            <li><a href="documentos/modelos/PR-2026-Ficha-de-ATLETA-Estadual---form APAC.docx" class="file-link" target="_blank">registro de Atleta</a></li>
+            <li></li>
+
+        </ul>
+    </li>
+    <li>
+
+</ul>
+
+</body>
+</html>
