@@ -3,79 +3,570 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modelos APAC - Estrutura em Árvore</title>
-
-    <!-- Exemplo de link CSS (pode trocar pela URL do CSS do site APAC) -->
-    <link rel="stylesheet" href="https://apac.esp.br/wp-content/themes/algumtema/style.css">
-
+    <title>Documentos e Modelos - APAC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        /* CSS para lista em árvore */
-        ul.tree, ul.tree ul {
-            list-style: none;
-            padding-left: 1em;
-            position: relative;
-        }
-
-        ul.tree ul {
-            margin-left: .5em;
-        }
-
-        ul.tree li {
+        /* Reset e Base */
+        * {
             margin: 0;
-            padding: .5em 0;
-            position: relative;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        ul.tree li::before {
-            content: "";
-            position: absolute;
-            top: 1em;
-            left: -1em;
-            width: 1em;
-            height: 0;
-            border-top: 1px solid #ccc;
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #F8F9FA;
+            color: #333333;
+            line-height: 1.6;
         }
 
-        ul.tree li::after {
-            content: "";
-            position: absolute;
-            top: 1em;
-            left: -1em;
-            border-left: 1px solid #ccc;
-            height: 100%;
+        /* Variáveis de Cor - APAC Corporativo */
+        :root {
+            --primary: #004A8D;
+            --primary-light: #0066CC;
+            --primary-dark: #003366;
+            --secondary: #F0F0F0;
+            --secondary-light: #E8E8E8;
+            --border: #E0E0E0;
+            --text-primary: #333333;
+            --text-secondary: #666666;
+            --white: #FFFFFF;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 24px rgba(0, 74, 141, 0.15);
         }
 
-        ul.tree li:last-child::after {
-            height: 1em;
+        /* Container */
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
         }
 
-        .file-link {
+        @media (min-width: 640px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                padding: 0 2rem;
+            }
+        }
+
+        /* Header */
+        header {
+            border-bottom: 1px solid var(--border);
+            background-color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            box-shadow: var(--shadow-sm);
+        }
+
+        header .container {
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
+
+        header h1 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        header p {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        /* Main Layout */
+        .main-content {
+            padding: 2rem 0;
+        }
+
+        /* Filters */
+        .filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 0.4rem;
+            border: 1px solid var(--border);
+            background-color: var(--white);
+            color: var(--text-primary);
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease-out;
+            font-family: inherit;
+        }
+
+        .filter-btn:hover {
+            background-color: var(--secondary);
+            border-color: var(--primary);
+        }
+
+        .filter-btn.active {
+            background-color: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        /* Documents Grid */
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Document Card */
+        .doc-card {
+            background-color: var(--white);
+            border-radius: 0.65rem;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+            padding: 1.5rem;
+            transition: all 0.3s ease-out;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .doc-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .doc-card-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .doc-card-icon {
+            width: 3rem;
+            height: 3rem;
+            background-color: var(--secondary);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        .doc-card-title {
+            flex: 1;
+        }
+
+        .doc-card-title h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+            line-height: 1.4;
+        }
+
+        .doc-card-category {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .doc-card-info {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin: 1rem 0;
+            padding: 1rem 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .doc-card-info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .doc-card-info-item i {
+            color: var(--primary);
+        }
+
+        .doc-card-description {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            flex: 1;
+            line-height: 1.5;
+        }
+
+        .doc-card-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: auto;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.4rem;
+            border: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease-out;
+            font-family: inherit;
             text-decoration: none;
-            color: #0073aa;
+            flex: 1;
         }
-        .file-link:hover {
-            text-decoration: underline;
-            color: #005177;
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--secondary);
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1.5rem;
+            background-color: var(--white);
+            border-radius: 0.65rem;
+            border: 1px solid var(--border);
+        }
+
+        .empty-state-icon {
+            width: 4rem;
+            height: 4rem;
+            margin: 0 auto 1rem;
+            background-color: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .empty-state h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .empty-state p {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .documents-grid {
+                grid-template-columns: 1fr;
+            }
+
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            .doc-card-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .doc-card-title {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
+    <header>
+        <div class="container">
+            <h1>Documentos e Modelos</h1>
+            <p>APAC - Associação dos Pais e Amigos dos Patinadores Artísticos</p>
+        </div>
+    </header>
 
-<h1>Modelos e Arquivos APAC</h1>
+    <div class="container main-content">
+        <!-- Filtros -->
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="atletas">Atletas</button>
+            <button class="filter-btn" data-filter="competicoes">Competições</button>
+            <button class="filter-btn" data-filter="financeiro">Financeiro</button>
+            <button class="filter-btn" data-filter="oficiais">Documentos Oficiais</button>
+            <button class="filter-btn" data-filter="relatorios">Relatórios</button>
+        </div>
 
-<ul class="tree">
-    <li>
-        <strong>Modelos</strong>
-        <ul>
-            
-            <li><a href="documentos/modelos/PR-2026-Ficha-de-ATLETA-Estadual---form APAC.docx" class="file-link" target="_blank">registro de Atleta</a></li>
-            <li></li>
+        <!-- Grid de Documentos -->
+        <div class="documents-grid" id="documentsGrid"></div>
+    </div>
 
-        </ul>
-    </li>
-    <li>
+    <script>
+        // Dados de documentos
+        const documents = [
+            {
+                id: "ficha-atleta",
+                title: "PR-2026-Ficha-de-ATLETA-Estadual",
+                category: "Atletas",
+                filter: "atletas",
+                size: "245 KB",
+                modified: "2026-01-15",
+                type: "DOCX",
+                description: "Formulário para cadastro de atletas em competições estaduais.",
+                url: "https://apac.esp.br/documentos/modelos/PR-2026-Ficha-de-ATLETA-Estadual---form%20APAC.docx"
+            },
+            {
+                id: "cadastro-atleta",
+                title: "Cadastro de Atleta - Formulário",
+                category: "Atletas",
+                filter: "atletas",
+                size: "128 KB",
+                modified: "2025-12-20",
+                type: "DOCX",
+                description: "Formulário completo para cadastro de novos atletas na APAC.",
+                url: null
+            },
+            {
+                id: "termo-responsabilidade",
+                title: "Termo de Responsabilidade",
+                category: "Atletas",
+                filter: "atletas",
+                size: "95 KB",
+                modified: "2025-11-10",
+                type: "PDF",
+                description: "Termo de responsabilidade para participação em eventos.",
+                url: null
+            },
+            {
+                id: "regulamento-competicao",
+                title: "Regulamento de Competição",
+                category: "Competições",
+                filter: "competicoes",
+                size: "312 KB",
+                modified: "2025-12-01",
+                type: "PDF",
+                description: "Regulamento geral para todas as competições organizadas pela APAC.",
+                url: null
+            },
+            {
+                id: "planilha-inscricoes",
+                title: "Planilha de Inscrições",
+                category: "Competições",
+                filter: "competicoes",
+                size: "156 KB",
+                modified: "2025-12-15",
+                type: "XLSX",
+                description: "Planilha para controle de inscrições em competições.",
+                url: null
+            },
+            {
+                id: "nota-fiscal",
+                title: "Modelo de Nota Fiscal",
+                category: "Financeiro",
+                filter: "financeiro",
+                size: "87 KB",
+                modified: "2025-10-30",
+                type: "DOCX",
+                description: "Modelo padrão de nota fiscal para emissão de recibos.",
+                url: null
+            },
+            {
+                id: "recibo",
+                title: "Recibo de Pagamento",
+                category: "Financeiro",
+                filter: "financeiro",
+                size: "64 KB",
+                modified: "2025-10-25",
+                type: "DOCX",
+                description: "Modelo de recibo para pagamentos e contribuições.",
+                url: null
+            },
+            {
+                id: "estatuto",
+                title: "Estatuto da APAC",
+                category: "Documentos Oficiais",
+                filter: "oficiais",
+                size: "425 KB",
+                modified: "2024-06-15",
+                type: "PDF",
+                description: "Estatuto oficial da Associação dos Pais e Amigos dos Patinadores Artísticos.",
+                url: null
+            },
+            {
+                id: "ata-2025",
+                title: "Ata Assembleia 2025",
+                category: "Documentos Oficiais",
+                filter: "oficiais",
+                size: "189 KB",
+                modified: "2025-12-10",
+                type: "PDF",
+                description: "Ata da assembleia geral realizada em dezembro de 2025.",
+                url: null
+            },
+            {
+                id: "ata-2024",
+                title: "Ata Assembleia 2024",
+                category: "Documentos Oficiais",
+                filter: "oficiais",
+                size: "167 KB",
+                modified: "2024-12-15",
+                type: "PDF",
+                description: "Ata da assembleia geral realizada em dezembro de 2024.",
+                url: null
+            },
+            {
+                id: "relatorio-anual",
+                title: "Relatório Anual 2025",
+                category: "Relatórios",
+                filter: "relatorios",
+                size: "567 KB",
+                modified: "2025-12-20",
+                type: "PDF",
+                description: "Relatório anual com atividades e resultados de 2025.",
+                url: null
+            },
+            {
+                id: "relatorio-financeiro",
+                title: "Relatório Financeiro",
+                category: "Relatórios",
+                filter: "relatorios",
+                size: "298 KB",
+                modified: "2025-12-18",
+                type: "PDF",
+                description: "Relatório financeiro com balanço e movimentações do período.",
+                url: null
+            }
+        ];
 
-</ul>
+        let currentFilter = 'all';
 
+        // Renderizar documentos
+        function renderDocuments(filter = 'all') {
+            const grid = document.getElementById('documentsGrid');
+            const filtered = filter === 'all' ? documents : documents.filter(doc => doc.filter === filter);
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div style="grid-column: 1 / -1;">
+                        <div class="empty-state">
+                            <div class="empty-state-icon">📄</div>
+                            <h3>Nenhum documento encontrado</h3>
+                            <p>Tente selecionar outra categoria.</p>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = filtered.map(doc => `
+                <div class="doc-card">
+                    <div class="doc-card-header">
+                        <div class="doc-card-icon">
+                            <i class="fas fa-file-${getFileIcon(doc.type)}"></i>
+                        </div>
+                        <div class="doc-card-title">
+                            <h3>${doc.title}</h3>
+                            <div class="doc-card-category">${doc.category}</div>
+                        </div>
+                    </div>
+
+                    <div class="doc-card-info">
+                        <div class="doc-card-info-item">
+                            <i class="fas fa-database"></i>
+                            <span>${doc.size}</span>
+                        </div>
+                        <div class="doc-card-info-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>${new Date(doc.modified).toLocaleDateString('pt-BR')}</span>
+                        </div>
+                        <div class="doc-card-info-item">
+                            <i class="fas fa-tag"></i>
+                            <span>${doc.type}</span>
+                        </div>
+                    </div>
+
+                    <p class="doc-card-description">${doc.description}</p>
+
+                    <div class="doc-card-actions">
+                        ${doc.url ? `
+                            <button class="btn btn-primary" onclick="window.open('${doc.url}', '_blank')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                            <button class="btn btn-outline" onclick="window.open('${doc.url}', '_blank')">
+                                <i class="fas fa-external-link-alt"></i> Abrir
+                            </button>
+                        ` : `
+                            <button class="btn btn-outline" disabled style="opacity: 0.6; cursor: not-allowed;">
+                                <i class="fas fa-lock"></i> Indisponível
+                            </button>
+                        `}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Obter ícone do arquivo
+        function getFileIcon(type) {
+            const icons = {
+                'PDF': 'pdf',
+                'DOCX': 'word',
+                'XLSX': 'excel',
+                'DOC': 'word'
+            };
+            return icons[type] || 'alt';
+        }
+
+        // Filtros
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentFilter = btn.dataset.filter;
+                renderDocuments(currentFilter);
+            });
+        });
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', () => {
+            renderDocuments();
+        });
+    </script>
 </body>
 </html>
