@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APAC - Associação dos Pais e Amigos dos Patinadores Artísticos de Curitiba</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Reset e Base */
+        * 
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        /* Variáveis de Cor */
+        :root {
+            --primary: #004A8D;
+            --primary-dark: #003366;
+            --primary-light: #0066CC;
+            --accent: #5B7FFF;
+            --text-primary: #333333;
+            --text-secondary: #666666;
+            --white: #FFFFFF;
+            --light-bg: #F8F9FA;
+            --border: #E0E0E0;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 24px rgba(0, 74, 141, 0.15);
+        }
+
+
+        /* Main Background */
+        .main-wrapper {
+            position: relative;
+            min-height: calc(100vh - 70px);
+            background: linear-gradient(135deg, rgba(0, 74, 141, 0.85) 0%, rgba(0, 51, 102, 0.85) 100%), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M0,50 Q25,25 50,50 T100,50" stroke="rgba(255,255,255,0.1)" stroke-width="2" fill="none"/></pattern></defs><rect width="1200" height="600" fill="%23004A8D"/><rect width="1200" height="600" fill="url(%23pattern)"/></svg>');
+            background-size: cover;
+            background-attachment: fixed;
+            padding: 3rem 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Championship Card */
+        .championship-card {
+            background-color: var(--white);
+            border-radius: 1rem;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            margin-bottom: 3rem;
+            animation: slideInUp 0.6s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Championship Header */
+        .championship-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .championship-header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .championship-dates {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            font-size: 1.125rem;
+            opacity: 0.95;
+            margin-bottom: 1.5rem;
+        }
+
+        .championship-dates span {
+            font-weight: 600;
+        }
+
+        .championship-dates i {
+            font-size: 1.5rem;
+        }
+
+        /* Stats Summary */
+        .stats-summary {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            padding: 0 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--white);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .stat-card-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-card-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            opacity: 0.9;
+        }
+
+        /* Athletes Container */
+        .athletes-container {
+            padding: 2rem;
+        }
+
+        .athlete-item {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .athlete-item:last-child {
+            border-bottom: none;
+        }
+
+        .athlete-item:hover {
+            background-color: #FAFBFC;
+        }
+
+        .athlete-name {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .athlete-category {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        /* Achievements List */
+        .achievements-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .achievements-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            line-height: 1.5;
+        }
+
+        .achievements-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: var(--white);
+        }
+
+        .empty-state-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.7;
+        }
+
+        .empty-state h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .empty-state p {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                height: auto;
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+            }
+
+            .championship-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .championship-dates {
+                flex-direction: column;
+                gap: 0.5rem;
+                font-size: 0.95rem;
+            }
+
+            .stats-summary {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+                padding: 0 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .stat-card {
+                padding: 0.75rem;
+            }
+
+            .stat-card-value {
+                font-size: 1.5rem;
+            }
+
+            .stat-card-label {
+                font-size: 0.7rem;
+            }
+
+            .athlete-item {
+                padding: 1rem;
+            }
+
+            .athlete-name {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .championship-header {
+                padding: 1.5rem 1rem;
+            }
+
+            .championship-header h1 {
+                font-size: 1.25rem;
+            }
+
+            .athletes-container {
+                padding: 1rem;
+            }
+
+            .athlete-item {
+                padding: 0.75rem;
+            }
+
+            .athlete-name {
+                font-size: 1rem;
+            }
+
+            .achievements-list li {
+                font-size: 0.85rem;
+                padding-left: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-icon">
+                    <img src="assets/logo.png" style="border-radius: 50%; width: 3rem;" alt="" srcset="">
+                </div>
+                <!-- <span class="logo-text">APAC</span> -->
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link" data-section="home">Home</a>
+                <a href="index.html#quem-somos" class="nav-link" data-section="quem-somos">Quem Somos</a>
+                <a href="index.html#projetos" class="nav-link" data-section="projetos">Projetos</a>
+                <a href="portfolio.html" class="nav-link" data-section="portfolio">Atletas</a>
+                <a href="quadro_conquistas.html" class="nav-link active" data-section="portfolio">Conquistas</a>
+                <a href="index.html#transparencia" class="nav-link" data-section="transparencia">Transparência</a>
+                <a href="index.html#contato" class="nav-link" data-section="contato">Contato</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <div class="container">
+            <div id="championshipsContainer"></div>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script src="conquistas.js"></script>
+</body>
+</html>
