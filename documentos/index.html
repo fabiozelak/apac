@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         /* Reset e Base */
         * {
@@ -319,6 +320,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <div class="container">
@@ -329,14 +331,14 @@
 
     <div class="container main-content">
         <!-- Filtros -->
-        <!-- <div class="filters">
+        <div class="filters">
             <button class="filter-btn active" data-filter="all">Todos</button>
             <button class="filter-btn" data-filter="atletas">Atletas</button>
             <button class="filter-btn" data-filter="competicoes">Competições</button>
-            <button class="filter-btn" data-filter="financeiro">Financeiro</button>
+            <!-- <button class="filter-btn" data-filter="financeiro">Financeiro</button>
             <button class="filter-btn" data-filter="oficiais">Documentos Oficiais</button>
-            <button class="filter-btn" data-filter="relatorios">Relatórios</button>
-        </div> -->
+            <button class="filter-btn" data-filter="relatorios">Relatórios</button> -->
+        </div>
 
         <!-- Grid de Documentos -->
         <div class="documents-grid" id="documentsGrid"></div>
@@ -345,6 +347,17 @@
     <script>
         // Dados de documentos
         const documents = [
+            {
+                id: "Programação Campeonato Brasileiro 2026, Amparo-SP e Ordem de Saída",
+                title: "Programação Campeonato Brasileiro 2026, Amparo-SP e Ordem de Saída",
+                category: "Competições",
+                filter: "competicoes",
+                size: "156 KB",
+                modified: "2025-12-15",
+                type: "LINK",
+                description: "Programação e Ordem de Saída do Campeonato Brasileiro de Patinação Artística 2026 em Amparo-SP.",
+                url: "campeonatos/Programação + OS CSB Campeonato Brasileiro de Patinação Artística - Amparo 2026-1 (1).pdf"
+            },
             {
                 id: "ficha-atleta",
                 title: "Ficha de Filiação Atleta FPP 2026",
@@ -400,7 +413,7 @@
                 description: "Formulário para envio de documentos para Registro do Atleta APAC 2026.",
                 url: "https://forms.gle/QPrT9eGYnWM7xKyB8"
             },
-                        {
+            {
                 id: "formulario portofolio",
                 title: "Formulário para envio de informações para Portfólio de Atletas no site da APAC 2026",
                 category: "Atletas ",
@@ -473,6 +486,17 @@
                 filter: "competicoes",
                 size: "156 KB",
                 modified: "2025-12-15",
+                type: "LINK",
+                description: "Ranking Nacional atualizado da CSB até 11 de fevereiro de 2026.",
+                url: "campeonatos/CSB2026-Ranking-v1-11-02.pdf"
+            },
+            {
+                id: "Ranking Nacional CSB 2026 - Atualizado até 11-02",
+                title: "Ranking Nacional CSB 2026 - Atualizado até 11-02",
+                category: "Competições",
+                filter: "competicoes",
+                size: "156 KB",
+                modified: "2024-12-15",
                 type: "LINK",
                 description: "Ranking Nacional atualizado da CSB até 11 de fevereiro de 2026.",
                 url: "campeonatos/CSB2026-Ranking-v1-11-02.pdf"
@@ -571,4 +595,5 @@
         });
     </script>
 </body>
+
 </html>
