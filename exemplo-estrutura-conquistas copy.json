@@ -1,0 +1,36 @@
+{
+  "championships": [
+    {
+      "id": "copa-amaerica-2026",
+      "name": "America´s CUP 2026",
+      "startDate": "10 de Janeiro",
+      "endDate": "20 de Janeiro",
+      "location": "Orlando FL, USA",
+      "stats": {
+        "totalMedals": 1,
+        "athletes": 2
+      },
+      "athletes": [
+        {
+          "id": "atleta-001",
+          "name": "Laura Machado",
+          "category": "Cadete a Sênior",
+          "achievements": [
+            "2º lugar - Figuras Obrigatórias",
+            "7º lugar - Solo Dance (5ºStyle +7º Free Dance)"
+          ]
+        },
+        {
+          "id": "atleta-002",
+          "name": "Ana Carolina Brenner",
+          "category": "Cadete a Sênior",
+          "achievements": [
+            "6º lugar - Figuras Obrigatórias",
+            "4º lugar - Livre",
+            "6º lugar - Solo Dance (7º Style + 6º Free Dance)"
+          ]
+        }
+      ]
+    }
+  ]
+}

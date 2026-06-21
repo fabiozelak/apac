@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio - APAC</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <p>Carregando portfólio...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-icon">
+                    <img src="assets/logo.png" style="border-radius: 50%; width: 3rem;" alt="" srcset="">
+                </div>
+                <!-- <span class="logo-text">APAC</span> -->
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link" data-section="home">Home</a>
+                <a href="index.html#quem-somos" class="nav-link" data-section="quem-somos">Quem Somos</a>
+                <a href="index.html#projetos" class="nav-link" data-section="projetos">Projetos</a>
+                <a href="portfolio.html" class="nav-link active" data-section="portfolio">Atletas</a>
+                <a href="quadro_conquistas.html" class="nav-link" data-section="quadro_conquistas">Conquistas</a>
+                <a href="index.html#transparencia" class="nav-link" data-section="transparencia">Transparência</a>
+                <a href="index.html#contato" class="nav-link" data-section="contato">Contato</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="portfolio-hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        Nossas Atletas
+                    </h1>
+                    <p class="hero-subtitle">
+                        Conheça nossas talentosas atletas, suas histórias e conquistas na patinação artística
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section class="portfolio-section section" id="portfolio">
+            <div class="container">
+                <!-- Search and Filter -->
+                <div class="portfolio-controls">
+                    <div class="search-container">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="search-input" placeholder="Buscar atleta..." class="search-input">
+                    </div>
+                    <div class="sort-container">
+                        <select id="sort-select" class="sort-select">
+                            <option value="name-asc">Nome (A-Z)</option>
+                            <option value="name-desc">Nome (Z-A)</option>
+                            <option value="date-desc">Mais Recente</option>
+                            <option value="date-asc">Mais Antigo</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Athletes Grid -->
+                <div class="athletes-grid" id="athletes-grid">
+                    <!-- Athletes will be loaded here by JavaScript -->
+                </div>
+
+                <!-- Loading State -->
+                <div class="loading-state" id="loading-state">
+                    <div class="loading-spinner"></div>
+                    <p>Carregando atletas...</p>
+                </div>
+
+                <!-- Empty State -->
+                <div class="empty-state" id="empty-state" style="display: none;">
+                    <i class="fas fa-search"></i>
+                    <h3>Nenhuma atleta encontrada</h3>
+                    <p>Tente ajustar os filtros de busca</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">APAC</span>
+                </div>
+                <p class="footer-description">
+                    Associação dos Pais e Amigos dos Patinadores Artísticos de Curitiba
+                </p>
+                <p class="footer-copyright">
+                    © 2025 APAC. Todos os direitos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+    </footer>
+
+    <!-- Athlete Modal -->
+    <div class="modal" id="athlete-modal">
+        <div class="modal-content">
+            <span class="modal-close" id="modal-close">&times;</span>
+            <div class="modal-body" id="modal-body">
+                <!-- Modal content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="portfolio.js"></script>
+</body>
+
+</html>

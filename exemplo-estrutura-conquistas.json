@@ -1,0 +1,187 @@
+{
+  "championships": [
+    {
+      "id": "americas-cup-2026",
+      "name": "America´s CUP 2026",
+      "startDate": "10 de Janeiro",
+      "endDate": "20 de Janeiro",
+      "location": "Orlando FL, USA",
+      "stats": {
+        "totalMedals": 2,
+        "athletes": 2
+      },
+      "athletes": [
+        {
+          "id": "laura-machado",
+          "name": "Laura Machado",
+          "category": "Cadete a Sênior",
+          "achievements": [
+            "2º lugar - Figuras Obrigatórias"
+          ]
+        },
+        {
+          "id": "ana-carolina-brenner",
+          "name": "Ana Carolina Brenner",
+          "category": "Cadete a Sênior",
+          "achievements": [
+            "4º lugar - Livre"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "classe-internacional-2026",
+      "name": "Classe Internacional 2026",
+      "startDate": "Janeiro/Fevereiro 2026",
+      "endDate": "Janeiro/Fevereiro 2026",
+      "location": "Brasil",
+      "stats": {
+        "totalMedals": 6,
+        "athletes": 5
+      },
+      "athletes": [
+        {
+          "id": "bruno-suzuki",
+          "name": "Bruno Suzuki",
+          "category": "Mini",
+          "achievements": [
+            "2º Lugar (Prata) - Solo Dance",
+            "2º Lugar (Prata) - Livre"
+          ]
+        },
+        {
+          "id": "luiza-butka",
+          "name": "Luiza Butka",
+          "category": "Mini",
+          "achievements": [
+            "5º Lugar - Solo Dance"
+          ]
+        },
+        {
+          "id": "quarteto-sênior-warrior",
+          "name": "Quarteto Sênior Warrior",
+          "category": "Sênior",
+          "achievements": [
+            "2º Lugar (Prata) - Quartetos"
+          ]
+        },
+        {
+          "id": "quarteto-cadete-apac-kids",
+          "name": "Quarteto Cadete APAC Kids",
+          "category": "Cadete",
+          "achievements": [
+            "3º Lugar (Bronze) - Quartetos"
+          ]
+        },
+        {
+          "id": "quarteto-infantil-apac-tiny",
+          "name": "Quarteto Infantil APAC Tiny",
+          "category": "Infantil",
+          "achievements": [
+            "4º Lugar - Quartetos"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "classe-nacional-2026",
+      "name": "Classe Nacional 2026",
+      "startDate": "Janeiro/Fevereiro 2026",
+      "endDate": "Janeiro/Fevereiro 2026",
+      "location": "Brasil",
+      "stats": {
+        "totalMedals": 17,
+        "athletes": 10
+      },
+      "athletes": [
+        {
+          "id": "stella-zelak",
+          "name": "Stella Zelak",
+          "category": "Cadete",
+          "achievements": [
+            "1º Lugar (Ouro) - Free Dance",
+            "1º Lugar (Ouro) - Livre"
+          ]
+        },
+        {
+          "id": "anna-rosa",
+          "name": "Anna Rosa",
+          "category": "Master",
+          "achievements": [
+            "4º Lugar - Figuras Obrigatórias",
+            "5º Lugar - Livre",
+            "3º Lugar (Bronze) - Solo Dance Americano"
+          ]
+        },
+        {
+          "id": "antonella-marcovicz",
+          "name": "Antonella Marcovicz",
+          "category": "Infantil",
+          "achievements": [
+            "4º Lugar - Figuras Obrigatórias"
+          ]
+        },
+        {
+          "id": "ana-laura-valdoski",
+          "name": "Ana Laura Valdoski",
+          "category": "Cadete",
+          "achievements": [
+            "1º Lugar (Ouro) - Figuras Obrigatórias"
+          ]
+        },
+        {
+          "id": "ana-carolina-navarro",
+          "name": "Ana Carolina Navarro",
+          "category": "Júnior",
+          "achievements": [
+            "4º Lugar - Figuras Obrigatórias"
+          ]
+        },
+        {
+          "id": "paola-sabei",
+          "name": "Paola Sabei",
+          "category": "Infantil",
+          "achievements": [
+            "3º Lugar (Bronze) - Figuras Obrigatórias",
+            "1º Lugar (Ouro) - Solo Dance Americano"
+          ]
+        },
+        {
+          "id": "milena-ramos",
+          "name": "Milena Ramos",
+          "category": "Adulto/Infantil",
+          "achievements": [
+            "1º Lugar (Ouro) - Figuras Obrigatórias"
+          ]
+        },
+        {
+          "id": "luiza-butka",
+          "name": "Luiza Butka",
+          "category": "Mini",
+          "achievements": [
+            "3º Lugar (Bronze) - Figuras Obrigatórias",
+            "1º Lugar (Ouro) - Solo Dance Americano"
+          ]
+        },
+        {
+          "id": "laura-machado",
+          "name": "Laura Machado",
+          "category": "Júnior",
+          "achievements": [
+            "4º Lugar - Figuras Obrigatórias",
+            "3º Lugar (Bronze) - Solo Dance Americano"
+          ]
+        },
+        {
+          "id": "louise-monteiro",
+          "name": "Louise Monteiro",
+          "category": "Juvenil/Cadete",
+          "achievements": [
+            "4º Lugar - Solo Dance Combinado",
+            "4º Lugar - Solo Dance Americano"
+          ]
+        }
+      ]
+    }
+  ]
+}

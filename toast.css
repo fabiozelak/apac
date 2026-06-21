@@ -1,0 +1,120 @@
+/* --- CSS Modernizado para Toast - apac.esp.br --- */
+
+/* Variáveis de Cor (inspiradas no site) para fácil manutenção */
+:root {
+    --cor-primaria-apac: #004A8D; /* Azul principal do site */
+    --cor-fundo-apac: #FFFFFF;
+    --cor-cinza-claro-apac: #F0F0F0;
+    --cor-texto-apac: #333333;
+    --sombra-suave-apac: 0 8px 24px rgba(0, 74, 141, 0.15); /* Sombra com um toque do azul */
+}
+
+.toast {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    width: 400px; /* Um pouco mais estreito para elegância */
+    max-width: 90%; /* Garante que não fique muito grande em telas menores */
+    background: var(--cor-fundo-apac);
+    border-radius: 12px; /* Bordas mais arredondadas */
+    box-shadow: var(--sombra-suave-apac);
+    overflow: hidden;
+    z-index: 1050; /* Um z-index comum para modais e toasts */
+    font-family: 'Poppins', sans-serif; /* Usa a mesma fonte do site */
+
+    /* Animação de entrada/saída */
+    opacity: 0;
+    transform: translateX(100%) scale(0.9);
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.4s ease;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+}
+
+.toast-header {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaçamento entre ícone e texto */
+    padding: 12px 15px;
+    background-color: var(--cor-cinza-claro-apac);
+    color: var(--cor-primaria-apac);
+    font-weight: 600; /* Um pouco mais de peso na fonte */
+    border-bottom: 1px solid #EAEAEA;
+}
+
+/* Ícone opcional no header (Exemplo com SVG) */
+.toast-header::before {
+    content: '✔'; /* Simples, mas eficaz. Troque por um SVG se preferir. */
+    display: inline-block;
+    color: var(--cor-primaria-apac);
+    font-size: 1.2em;
+}
+
+.toast-header .close-btn {
+    margin-left: auto;
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    color: var(--cor-texto-apac);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.toast .text {
+    width: 100%;
+    height: 240px; /* Ajuste a altura conforme necessário */
+    border: none; /* Remove a borda padrão do iframe */
+    padding: 15px;
+    /* margin: auto; */
+}
+
+.toast .text a {
+    display: block;
+    margin: 0 auto;
+    text-decoration: none;
+    color: #007bff;
+    text-align: center;
+}
+
+.toast .text a:hover {
+    text-decoration: underline;
+}
+
+/* Barra de progresso opcional */
+.toast::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    width: 100%;
+    background-color: var(--cor-primaria-apac);
+    animation: progress 5s linear forwards; /* Duração da animação = tempo do toast na tela */
+}
+
+@keyframes progress {
+    from { width: 100%; }
+    to { width: 0%; }
+}
+
+/* Ajustes para dispositivos móveis */
+@media (max-width: 768px) {
+    .toast {
+        top: 0;
+        right: 0;
+        width: 100%;
+        max-width: 100%;
+        border-radius: 0;
+        transform: translateY(-100%);
+    }
+
+    .toast.show {
+        transform: translateY(0);
+    }
+
+    .toast-header {
+        padding: 15px;
+    }
+}

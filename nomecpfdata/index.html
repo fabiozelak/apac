@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela de Dados</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        thead {
+            background-color: #2c3e50;
+            color: white;
+        }
+
+        th {
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+            border-bottom: 2px solid #34495e;
+        }
+
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+
+        .copy-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .copy-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 4px 8px;
+            border-radius: 3px;
+            transition: background-color 0.2s;
+            color: #3498db;
+        }
+
+        .copy-btn:hover {
+            background-color: #ecf0f1;
+            color: #2980b9;
+        }
+
+        .copy-btn:active {
+            transform: scale(0.95);
+        }
+
+        .copy-feedback {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #27ae60;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 1000;
+        }
+
+        .copy-feedback.show {
+            display: block;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Data de Nascimento</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>ANA CAROLINA JANECZKO NAVARRO</td>
+                <td>
+                    <div class="copy-container">
+                        <span>107.835.429-41</span>
+                        <button class="copy-btn" onclick="copiarTexto('107.835.429-41')" title="Copiar CPF">📋</button>
+                    </div>
+                </td>
+                <td>
+                    <div class="copy-container">
+                        <span>09/12/2010</span>
+                        <button class="copy-btn" onclick="copiarTexto('09/12/2010')" title="Copiar data">📋</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>ANA CAROLINA POGLIA BRENNER</td>
+                <td>
+                    <div class="copy-container">
+                        <span>091.992.289-98</span>
+                        <button class="copy-btn" onclick="copiarTexto('091.992.289-98')" title="Copiar CPF">📋</button>
+                    </div>
+                </td>
+                <td>
+                    <div class="copy-container">
+                        <span>27/09/2009</span>
+                        <button class="copy-btn" onclick="copiarTexto('27/09/2009')" title="Copiar data">📋</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>ANA CECÍLIA FERREIRA MONTEIRO</td>
+                <td>
+                    <div class="copy-container">
+                        <span>152.751.189-88</span>
+                        <button class="copy-btn" onclick="copiarTexto('152.751.189-88')" title="Copiar CPF">📋</button>
+                    </div>
+                </td>
+                <td>
+                    <div class="copy-container">
+                        <span>17/04/2013</span>
+                        <button class="copy-btn" onclick="copiarTexto('17/04/2013')" title="Copiar data">📋</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>ANA FOFANO</td>
+                <td>
+                    <div class="copy-container">
+                        <span>144.395.759-35</span>
+                        <button class="copy-btn" onclick="copiarTexto('144.395.759-35')" title="Copiar CPF">📋</button>
+                    </div>
+                </td>
+                <td>
+                    <div class="copy-container">
+                        <span>23/01/2011</span>
+                        <button class="copy-btn" onclick="copiarTexto('23/01/2011')" title="Copiar data">📋</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>ANA LAURA VALDOSKI DOS SANTOS</td>
+                <td>
+                    <div class="copy-container">
+                        <span>121.894.269-01</span>
+                        <button class="copy-btn" onclick="copiarTexto('121.894.269-01')" title="Copiar CPF">📋</button>
+                    </div>
+                </td>
+                <td>
+                    <div class="copy-container">
+                        <span>18/03/2012</span>
+                        <button class="copy-btn" onclick="copiarTexto('18/03/2012')" title="Copiar data">📋</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>ANNA ROSA SILVEIRA</td>
+                <td>
+                    <div class="copy-container">
+                        <span>572.051.249-72</span>
+                        <button class="copy-btn" onclick="copiarTexto('572.051.249-72')" title="Copiar CPF">📋</button>
+                    </div>
+                </td>
+                <td>
+                    <div class="copy-container">
+                        <span>23/12/1966</span>
+                        <button class="copy-btn" onclick="copiarTexto('23/12/1966')" title="Copiar data">📋</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>ANTONELLA MARCOVICZ</td>
+                <td>
+                    <div class="copy-container">
+                        <span>116.779.919-41</span>
+                        <button class="copy-btn" onclick="copiarTexto('116.779.919-41')" title="Copiar CPF">📋</button>
+                    </div>
+                </td>
+                <td>
+                    <div class="copy-container">
+                        <span>31/08/2014</span>
+                        <button class="copy-btn" onclick="copiarTexto('31/08/2014')" title="Copiar data">📋</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>BEATRIZ STABEN ALVES</td>
+                <td>
+                    <div class="copy-container">
+                        <span>138.417.339-05</span>
+                        <button class="copy-btn" onclick="copiarTexto('138.417.339-05')" title="Copiar CPF">📋</button>
+                    </div>
+                </td>
+                <td>
+                    <div class="copy-container">
+                        <span>27/12/2007</span>
+                        <button class="copy-btn" onclick="copiarTexto('27/12/2007')" title="Copiar data">📋</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>BRUNO PADULA SUZUKI</td>
+                <td>
+                    <div class="copy-container">
+                        <span>134.762.809-69</span>
+                        <button class="copy-btn" onclick="copiarTexto('134.762.809-69')" title="Copiar CPF">📋</button>
+                    </div>
+                </td>
+                <td>
+                    <div class="copy-container">
+                        <span>12/04/2015</span>
+                        <button class="copy-btn" onclick="copiarTexto('12/04/2015')" title="Copiar data">📋</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>FERNANDA VILAS BOAS ANTUNES</td>
+                <td>
+                    <div class="copy-container">
+                        <span>594.110.058-29</span>
+                        <button class="copy-btn" onclick="copiarTexto('594.110.058-29')" title="Copiar CPF">📋</button>
+                    </div>
+                </td>
+                <td>
+                    <div class="copy-container">
+                        <span>30/07/2012</span>
+                        <button class="copy-btn" onclick="copiarTexto('30/07/2012')" title="Copiar data">📋</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>LAURA AURORA</td>
+                <td>
+                    <div class="copy-container">
+                        <span>147.813.459-30</span>
+                        <button class="copy-btn" onclick="copiarTexto('147.813.459-30')" title="Copiar CPF">📋</button>
+                    </div>
+                </td>
+                <td>
+                    <div class="copy-container">
+                        <span>30/12/2014</span>
+                        <button class="copy-btn" onclick="copiarTexto('30/12/2014')" title="Copiar data">📋</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>LAURA DE LIZ</td>
+                <td>
+                    <div class="copy-container">
+                        <span>113.468.969-17</span>
+                        <button class="copy-btn" onclick="copiarTexto('113.468.969-17')" title="Copiar CPF">📋</button>
+                    </div>
+                </td>
+                <td>
+                    <div class="copy-container">
+                        <span>09/07/2013</span>
+                        <button class="copy-btn" onclick="copiarTexto('09/07/2013')" title="Copiar data">📋</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>LAURA MACHADO</td>
+                <td>
+                    <div class="copy-container">
+                        <span>153.893.619-46</span>
+                        <button class="copy-btn" onclick="copiarTexto('153.893.619-46')" title="Copiar CPF">📋</button>
+                    </div>
+                </td>
+                <td>
+                    <div class="copy-container">
+                        <span>21/10/2010</span>
+                        <button class="copy-btn" onclick="copiarTexto('21/10/2010')" title="Copiar data">📋</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>LAURA NOGUEIRA ZANATTA</td>
+                <td>
+                    <div class="copy-container">
+                        <span>115.033.599-80</span>
+                        <button class="copy-btn" onclick="copiarTexto('115.033.599-80')" title="Copiar CPF">📋</button>
+                    </div>
+                </td>
+                <td>
+                    <div class="copy-container">
+                        <span>12/05/2013</span>
+                        <button class="copy-btn" onclick="copiarTexto('12/05/2013')" title="Copiar data">📋</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>LAURA TRANCOSO RAMOS</td>
+                <td>
+                    <div class="copy-container">
+                        <span>102.253.139-52</span>
+                        <button class="copy-btn" onclick="copiarTexto('102.253.139-52')" title="Copiar CPF">📋</button>
+                    </div>
+                </td>
+                <td>
+                    <div class="copy-container">
+                        <span>21/01/2011</span>
+                        <button class="copy-btn" onclick="copiarTexto('21/01/2011')" title="Copiar data">📋</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>LETÍCIA SHIMODA DE CARVALHO</td>
+                <td>
+                    <div class="copy-container">
+                        <span>107.138.549-60</span>
+                        <button class="copy-btn" onclick="copiarTexto('107.138.549-60')" title="Copiar CPF">📋</button>
+                    </div>
+                </td>
+                <td>
+                    <div class="copy-container">
+                        <span>10/04/2000</span>
+                        <button class="copy-btn" onclick="copiarTexto('10/04/2000')" title="Copiar data">📋</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>LOUISE CRISTINE MONTEIRO</td>
+                <td>
+                    <div class="copy-container">
+                        <span>099.199.729-83</span>
+                        <button class="copy-btn" onclick="copiarTexto('099.199.729-83')" title="Copiar CPF">📋</button>
+                    </div>
+                </td>
+                <td>
+                    <div class="copy-container">
+                        <span>20/07/2011</span>
+                        <button class="copy-btn" onclick="copiarTexto('20/07/2011')" title="Copiar data">📋</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>LUANA LEÃO NOVACKI</td>
+                <td>
+                    <div class="copy-container">
+                        <span>078.195.029-59</span>
+                        <button class="copy-btn" onclick="copiarTexto('078.195.029-59')" title="Copiar CPF">📋</button>
+                    </div>
+                </td>
+                <td>
+                    <div class="copy-container">
+                        <span>04/06/2007</span>
+                        <button class="copy-btn" onclick="copiarTexto('04/06/2007')" title="Copiar data">📋</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>LUIZA ASSAOKA TOMAZELA</td>
+                <td>
+                    <div class="copy-container">
+                        <span>527.384.058-94</span>
+                        <button class="copy-btn" onclick="copiarTexto('527.384.058-94')" title="Copiar CPF">📋</button>
+                    </div>
+                </td>
+                <td>
+                    <div class="copy-container">
+                        <span>02/04/2017</span>
+                        <button class="copy-btn" onclick="copiarTexto('02/04/2017')" title="Copiar data">📋</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>LUIZA HELENA NAKASAKI BUTKA</td>
+                <td>
+                    <div class="copy-container">
+                        <span>125.945.839-36</span>
+                        <button class="copy-btn" onclick="copiarTexto('125.945.839-36')" title="Copiar CPF">📋</button>
+                    </div>
+                </td>
+                <td>
+                    <div class="copy-container">
+                        <span>02/04/2016</span>
+                        <button class="copy-btn" onclick="copiarTexto('02/04/2016')" title="Copiar data">📋</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>MANUELA VILAS BOAS ANTUNES</td>
+                <td>
+                    <div class="copy-container">
+                        <span>594.110.248-82</span>
+                        <button class="copy-btn" onclick="copiarTexto('594.110.248-82')" title="Copiar CPF">📋</button>
+                    </div>
+                </td>
+                <td>
+                    <div class="copy-container">
+                        <span>18/09/2009</span>
+                        <button class="copy-btn" onclick="copiarTexto('18/09/2009')" title="Copiar data">📋</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>MARIA FERNANDA CARONE SARRAF</td>
+                <td>
+                    <div class="copy-container">
+                        <span>117.687.079-36</span>
+                        <button class="copy-btn" onclick="copiarTexto('117.687.079-36')" title="Copiar CPF">📋</button>
+                    </div>
+                </td>
+                <td>
+                    <div class="copy-container">
+                        <span>11/11/2014</span>
+                        <button class="copy-btn" onclick="copiarTexto('11/11/2014')" title="Copiar data">📋</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>MARIANA PALMERIO REICHERT</td>
+                <td>
+                    <div class="copy-container">
+                        <span>148.565.099-26</span>
+                        <button class="copy-btn" onclick="copiarTexto('148.565.099-26')" title="Copiar CPF">📋</button>
+                    </div>
+                </td>
+                <td>
+                    <div class="copy-container">
+                        <span>28/10/2014</span>
+                        <button class="copy-btn" onclick="copiarTexto('28/10/2014')" title="Copiar data">📋</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>MAYSA VEIGA</td>
+                <td>
+                    <div class="copy-container">
+                        <span>128.310.489-07</span>
+                        <button class="copy-btn" onclick="copiarTexto('128.310.489-07')" title="Copiar CPF">📋</button>
+                    </div>
+                </td>
+                <td>
+                    <div class="copy-container">
+                        <span>10/12/2003</span>
+                        <button class="copy-btn" onclick="copiarTexto('10/12/2003')" title="Copiar data">📋</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>MILENA RAMOS SILVA</td>
+                <td>
+                    <div class="copy-container">
+                        <span>066.314.371-30</span>
+                        <button class="copy-btn" onclick="copiarTexto('066.314.371-30')" title="Copiar CPF">📋</button>
+                    </div>
+                </td>
+                <td>
+                    <div class="copy-container">
+                        <span>21/10/2013</span>
+                        <button class="copy-btn" onclick="copiarTexto('21/10/2013')" title="Copiar data">📋</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>PAOLA BERARDI SABEI</td>
+                <td>
+                    <div class="copy-container">
+                        <span>115.250.129-16</span>
+                        <button class="copy-btn" onclick="copiarTexto('115.250.129-16')" title="Copiar CPF">📋</button>
+                    </div>
+                </td>
+                <td>
+                    <div class="copy-container">
+                        <span>31/05/2014</span>
+                        <button class="copy-btn" onclick="copiarTexto('31/05/2014')" title="Copiar data">📋</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>STELLA BARTH ZELAK</td>
+                <td>
+                    <div class="copy-container">
+                        <span>113.128.119-51</span>
+                        <button class="copy-btn" onclick="copiarTexto('113.128.119-51')" title="Copiar CPF">📋</button>
+                    </div>
+                </td>
+                <td>
+                    <div class="copy-container">
+                        <span>14/09/2012</span>
+                        <button class="copy-btn" onclick="copiarTexto('14/09/2012')" title="Copiar data">📋</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>GRACIELA SAMBURGO</td>
+                <td>
+                    <div class="copy-container">
+                        <span>544.248.019-34</span>
+                        <button class="copy-btn" onclick="copiarTexto('544.248.019-34')" title="Copiar CPF">📋</button>
+                    </div>
+                </td>
+                <td>
+                    <div class="copy-container">
+                        <span>18/10/1957</span>
+                        <button class="copy-btn" onclick="copiarTexto('18/10/1957')" title="Copiar data">📋</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>FABIANA CONSENTINO</td>
+                <td>
+                    <div class="copy-container">
+                        <span>024.043.689-07</span>
+                        <button class="copy-btn" onclick="copiarTexto('024.043.689-07')" title="Copiar CPF">📋</button>
+                    </div>
+                </td>
+                <td>
+                    <div class="copy-container">
+                        <span>24/11/1975</span>
+                        <button class="copy-btn" onclick="copiarTexto('24/11/1975')" title="Copiar data">📋</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>ISADORA LAU</td>
+                <td>
+                    <div class="copy-container">
+                        <span>109.046.699-47</span>
+                        <button class="copy-btn" onclick="copiarTexto('109.046.699-47')" title="Copiar CPF">📋</button>
+                    </div>
+                </td>
+                <td>
+                    <div class="copy-container">
+                        <span>20/05/2002</span>
+                        <button class="copy-btn" onclick="copiarTexto('20/05/2002')" title="Copiar data">📋</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="copy-feedback" id="feedback"></div>
+
+    <script>
+        function copiarTexto(texto) {
+            navigator.clipboard.writeText(texto).then(() => {
+                const feedback = document.getElementById('feedback');
+                feedback.textContent = 'Copiado: ' + texto;
+                feedback.classList.add('show');
+                
+                setTimeout(() => {
+                    feedback.classList.remove('show');
+                }, 2000);
+            }).catch(err => {
+                console.error('Erro ao copiar:', err);
+            });
+        }
+    </script>
+</body>
+</html>

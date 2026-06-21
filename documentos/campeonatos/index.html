@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentos e Modelos - APAC</title>
+    <link rel="apple-touch-icon" sizes="180x180" href=../../favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon/favicon-16x16.png">
+    <link rel="manifest" href="../../favicon/site.webmanifest">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Reset e Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #F8F9FA;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        /* Variáveis de Cor - APAC Corporativo */
+        :root {
+            --primary: #004A8D;
+            --primary-light: #0066CC;
+            --primary-dark: #003366;
+            --secondary: #F0F0F0;
+            --secondary-light: #E8E8E8;
+            --border: #E0E0E0;
+            --text-primary: #333333;
+            --text-secondary: #666666;
+            --white: #FFFFFF;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 24px rgba(0, 74, 141, 0.15);
+        }
+
+        /* Container */
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                padding: 0 2rem;
+            }
+        }
+
+        /* Header */
+        header {
+            border-bottom: 1px solid var(--border);
+            background-color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            box-shadow: var(--shadow-sm);
+        }
+
+        header .container {
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
+
+        header h1 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        header p {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        /* Main Layout */
+        .main-content {
+            padding: 2rem 0;
+        }
+
+        /* Filters */
+        .filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 0.4rem;
+            border: 1px solid var(--border);
+            background-color: var(--white);
+            color: var(--text-primary);
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease-out;
+            font-family: inherit;
+        }
+
+        .filter-btn:hover {
+            background-color: var(--secondary);
+            border-color: var(--primary);
+        }
+
+        .filter-btn.active {
+            background-color: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        /* Documents Grid */
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Document Card */
+        .doc-card {
+            background-color: var(--white);
+            border-radius: 0.65rem;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+            padding: 1.5rem;
+            transition: all 0.3s ease-out;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .doc-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .doc-card-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .doc-card-icon {
+            width: 3rem;
+            height: 3rem;
+            background-color: var(--secondary);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        .doc-card-title {
+            flex: 1;
+        }
+
+        .doc-card-title h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+            line-height: 1.4;
+        }
+
+        .doc-card-category {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .doc-card-info {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin: 1rem 0;
+            padding: 1rem 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .doc-card-info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .doc-card-info-item i {
+            color: var(--primary);
+        }
+
+        .doc-card-description {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            flex: 1;
+            line-height: 1.5;
+        }
+
+        .doc-card-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: auto;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.4rem;
+            border: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease-out;
+            font-family: inherit;
+            text-decoration: none;
+            flex: 1;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--secondary);
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1.5rem;
+            background-color: var(--white);
+            border-radius: 0.65rem;
+            border: 1px solid var(--border);
+        }
+
+        .empty-state-icon {
+            width: 4rem;
+            height: 4rem;
+            margin: 0 auto 1rem;
+            background-color: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .empty-state h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .empty-state p {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .documents-grid {
+                grid-template-columns: 1fr;
+            }
+
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            .doc-card-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .doc-card-title {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <body>
+    <!-- Loading Animation -->
+    <div class="loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <p>Carregando documentos...</p>
+        </div>
+    </div>
+
+<!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-icon">
+                    <img src="../../assets/logo.png" style="border-radius: 50%; width: 3rem;" alt="" srcset="">
+                </div>
+                <!-- <span class="logo-text">APAC</span> -->
+            </div>
+            
+ <!-- Desktop Menu -->
+            <div class="nav-menu" id="nav-menu">
+                <a href="../index.html" class="nav-link" data-section="home">Home</a>
+                <a href="../index.html#quem-somos" class="nav-link" data-section="quem-somos">Quem Somos</a>
+                <a href="../index.html#projetos" class="nav-link" data-section="projetos">Projetos</a>
+                <a href="../portfolio.html" class="nav-link" data-section="portfolio">Atletas</a>
+                <a href="../index.html#transparencia" class="nav-link active" data-section="transparencia">Transparência</a>
+                <a href="../index.html#contato" class="nav-link" data-section="contato">Contato</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+    <header>
+        <div class="container">
+            <div class="hero-content" style="margin-top: 3rem;">
+                            <h1>Documentos, Formulários, links e Modelos</h1>
+            <p>APAC - Associação dos Pais e Amigos dos Patinadores Artísticos</p>
+            </div>
+
+        </div>
+    </header>
+
+    <div class="container main-content">
+        <!-- Filtros -->
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="atletas">Atletas</button>
+            <button class="filter-btn" data-filter="competicoes">Competições</button>
+            <!-- <button class="filter-btn" data-filter="financeiro">Financeiro</button>
+            <button class="filter-btn" data-filter="oficiais">Documentos Oficiais</button>
+            <button class="filter-btn" data-filter="relatorios">Relatórios</button> -->
+        </div>
+
+        <!-- Grid de Documentos -->
+        <div class="documents-grid" id="documentsGrid"></div>
+    </div>
+
+    <script>
+        // Dados de documentos
+        const documents = [
+            {
+                id: "Programação Campeonato Brasileiro 2026, Amparo-SP e Ordem de Saída",
+                title: "Programação Campeonato Brasileiro 2026, Amparo-SP e Ordem de Saída",
+                category: "Competições",
+                filter: "competicoes",
+                size: "156 KB",
+                modified: "2025-12-15",
+                type: "LINK",
+                description: "Programação e Ordem de Saída do Campeonato Brasileiro de Patinação Artística 2026 em Amparo-SP.",
+                url: "Programação + OS CSB Campeonato Brasileiro de Patinação Artística - Amparo 2026-1 (1).pdf"
+            },
+            {
+                id: "ficha-atleta",
+                title: "Ficha de Filiação Atleta FPP 2026",
+                category: "Atletas",
+                filter: "atletas",
+                size: "245 KB",
+                modified: "2026-01-15",
+                type: "DOCX",
+                description: "Formulário para Filiação de atletas em competições estaduais.",
+                url: "modelos/PR-2026-Ficha-de-ATLETA-Estadual---form%20APAC.docx"
+            },
+            {
+                id: "arquivos",
+                title: "Musicas Solo Dance 2026",
+                category: "Atletas",
+                filter: "atletas",
+                size: "128 KB",
+                modified: "2025-12-20",
+                type: "LINK",
+                description: "Site da World Skate com as músicas para o Solo Dance 2026.",
+                url: "https://www.worldskate.org/artistic/about/regulations/category/1578-compulsory-dances-2026.html"
+            },
+            {
+                id: "arquivos",
+                title: "Regimento de Taxas 2026 – Patinação Artística",
+                category: "Atletas",
+                filter: "atletas",
+                size: "95 KB",
+                modified: "2025-11-10",
+                type: "PDF",
+                description: "link do site da CSB do Regimento de Taxas 2026 – Patinação Artística.",
+                url: "https://csb.esp.br/wp-content/uploads/2026/01/20251222-PA_regimento_taxas_2026.pdf"
+            },
+            {
+                id: "arquivos",
+                title: "Informações Campeonato Brasileiro 2026 - Amparo-SP",
+                category: "Competições",
+                filter: "competicoes",
+                size: "312 KB",
+                modified: "2025-12-01",
+                type: "PDF",
+                description: "Portal onde estão algumas informações sobre o Campeonato Brasileiro 2026.",
+                url: "https://csb.esp.br/events/csb-campeonato-brasileiro-3/"
+            },
+            {
+                id: "formulario apac",
+                title: "Formulário para envio de documentos para Registro do Atleta APAC 2026",
+                category: "Atletas ",
+                filter: "Atletas",
+                size: "156 KB",
+                modified: "2025-12-15",
+                type: "LINK",
+                description: "Formulário para envio de documentos para Registro do Atleta APAC 2026.",
+                url: "https://forms.gle/QPrT9eGYnWM7xKyB8"
+            },
+            {
+                id: "formulario portofolio",
+                title: "Formulário para envio de informações para Portfólio de Atletas no site da APAC 2026",
+                category: "Atletas ",
+                filter: "atletas",
+                size: "156 KB",
+                modified: "2025-12-15",
+                type: "LINK",
+                description: "Formulário para envio de informações para Portfólio de Atletas no site APAC 2026.",
+                url: "https://forms.gle/LAyTeBznsCzkzb6s9"
+            },
+            {
+                id: "Calendário de Patinação Artística 2026",
+                title: "Calendário de Patinação Artística 2026",
+                category: "Competições",
+                filter: "competicoes",
+                size: "156 KB",
+                modified: "2025-12-15",
+                type: "LINK",
+                description: "Calendário oficial da Patinação Artística 2026.",
+                url: null
+            },
+            {
+                id: "programação Definitiva Campenato Brasileiro 2026, Amparo-SP",
+                title: "Programação Definitiva Campeonato Brasileiro 2026 - Amparo-SP",
+                category: "Competições",
+                filter: "competicoes",
+                size: "156 KB",
+                modified: "2025-12-15",
+                type: "LINK",
+                description: "Programação Definitiva do Campeonato Brasileiro 2026 - Amparo-SP.",
+                url: "programacao_definitiva_amparo_sp_2026.pdf"
+            },
+            {
+                id: "Regras para composição do ranking Nacional CSB 2026",
+                title: "Regras para composição do ranking Nacional CSB 2026",
+                category: "Competições",
+                filter: "competicoes",
+                size: "156 KB",
+                modified: "2025-12-15",
+                type: "LINK",
+                description: "O Ranking Nacional estabelece diretrizes atualizadas em conformidade com o Regulamento Básico da CSB, estando alinhado com as disposições do artigo 83 deste regulamento.",
+                url: "CSB2026-Regras-Ranking-Nacional-PA-1 (1).pdf"
+            },
+            {
+                id: "PRogramação World Cup Buenos Aires Abril 11-19-2026",
+                title: "Programação World Cup Buenos Aires Abril 11-19-2026",
+                category: "Competições",
+                filter: "competicoes",
+                size: "156 KB",
+                modified: "2025-12-15",
+                type: "LINK",
+                description: "O Ranking Nacional estabelece diretrizes atualizadas em conformidade com o Regulamento Básico da CSB, estando alinhado com as disposições do artigo 83 deste regulamento.",
+                url: "buenos aires abril 11-19-2026.pdf"
+            },
+            {
+                id: "Boletin WORLD SKATE N°01 ARTISTIC WORLD CUP 2026",
+                title: "Boletin World Skate N°01 Artistic World Cup 2026",
+                category: "Competições",
+                filter: "competicoes",
+                size: "156 KB",
+                modified: "2025-12-15",
+                type: "LINK",
+                description: "Boletim oficial da World Skate que anuncia a primeira etapa da Copa do Mundo de Patinação Artística de 2026 (p. 1). O evento será realizado em Buenos Aires, Argentina, de 11 a 19 de abril de 2026, e contará com diversas categorias, como Tots, Minis, Espoir, Cadet, Youth, Junior e Senior (p. 1). O local específico do evento é o Parque Olímpico de la Juventud (p. 2).",
+                url: "ARTISTIC WORLD CUP 2026.pdf"
+            },
+            {
+                id: "Ranking Nacional CSB 2026 - Atualizado até 11-02",
+                title: "Ranking Nacional CSB 2026 - Atualizado até 11-02",
+                category: "Competições",
+                filter: "competicoes",
+                size: "156 KB",
+                modified: "2025-12-15",
+                type: "LINK",
+                description: "Ranking Nacional atualizado da CSB até 11 de fevereiro de 2026.",
+                url: "CSB2026-Ranking-v1-11-02.pdf"
+            },
+            {
+                id: "Ranking Nacional CSB 2026 - Atualizado até 11-02",
+                title: "Ranking Nacional CSB 2026 - Atualizado até 11-02",
+                category: "Competições",
+                filter: "competicoes",
+                size: "156 KB",
+                modified: "2024-12-15",
+                type: "LINK",
+                description: "Ranking Nacional atualizado da CSB até 11 de fevereiro de 2026.",
+                url: "CSB2026-Ranking-v1-11-02.pdf"
+            }
+        ];
+
+        let currentFilter = 'all';
+
+        // Renderizar documentos
+        function renderDocuments(filter = 'all') {
+            const grid = document.getElementById('documentsGrid');
+            const filtered = filter === 'all' ? documents : documents.filter(doc => doc.filter === filter);
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div style="grid-column: 1 / -1;">
+                        <div class="empty-state">
+                            <div class="empty-state-icon">📄</div>
+                            <h3>Nenhum documento encontrado</h3>
+                            <p>Tente selecionar outra categoria.</p>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = filtered.map(doc => `
+                <div class="doc-card">
+                    <div class="doc-card-header">
+                        <div class="doc-card-icon">
+                            <i class="fas fa-file-${getFileIcon(doc.type)}"></i>
+                        </div>
+                        <div class="doc-card-title">
+                            <h3>${doc.title}</h3>
+                            <div class="doc-card-category">${doc.category}</div>
+                        </div>
+                    </div>
+
+                    <div class="doc-card-info">
+                        <div class="doc-card-info-item">
+                            <i class="fas fa-database"></i>
+                            <span>${doc.size}</span>
+                        </div>
+                        <div class="doc-card-info-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>${new Date(doc.modified).toLocaleDateString('pt-BR')}</span>
+                        </div>
+                        <div class="doc-card-info-item">
+                            <i class="fas fa-tag"></i>
+                            <span>${doc.type}</span>
+                        </div>
+                    </div>
+
+                    <p class="doc-card-description">${doc.description}</p>
+
+                    <div class="doc-card-actions">
+                        ${doc.url ? `
+
+                            <button class="btn btn-outline" onclick="window.open('${doc.url}', '_blank')">
+                                <i class="fas fa-external-link-alt"></i> Abrir
+                            </button>
+                        ` : `
+                            <button class="btn btn-outline" disabled style="opacity: 0.6; cursor: not-allowed;">
+                                <i class="fas fa-lock"></i> Indisponível
+                            </button>
+                        `}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Obter ícone do arquivo
+        function getFileIcon(type) {
+            const icons = {
+                'PDF': 'pdf',
+                'DOCX': 'word',
+                'XLSX': 'excel',
+                'DOC': 'word'
+            };
+            return icons[type] || 'alt';
+        }
+
+        // Filtros
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentFilter = btn.dataset.filter;
+                renderDocuments(currentFilter);
+            });
+        });
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', () => {
+            renderDocuments();
+        });
+    </script>
+</body>
+
+</html>

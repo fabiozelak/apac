@@ -1,0 +1,134 @@
+[
+  {
+    "id": 1,
+    "nome": "Estatuto Social APAC",
+    "categoria": "Estatutos",
+    "data": "2025-11-26",
+    "descricao": "Documento que regulamenta a organização e funcionamento da Associação dos Pais e Amigos dos Patinadores Artísticos de Curitiba.",
+    "arquivo": "documentos/estatutos/estatuto_social_apac_2025.pdf",
+    "tamanho": "174 KB",
+    "tipo": "PDF",
+    "hidden": "false"
+  },
+  {
+    "id": 2,
+    "nome": "Edital de convocação para a 1ª Assembléia Geral de 2026",
+    "categoria": "Editais",
+    "data": "2025-12-28",
+    "descricao": "Apresentação, discussão e deliberação sobre a Programação de Atividades da APAC para o ano de 2026; discussão e definição dos valores da anuidade dos associados, conforme competência da Diretoria e apreciação da Assembleia Geral; apreciação de novos associados; e assuntos gerais de interesse da Associação.",
+    "arquivo": "documentos/editais/convocacao_assembleia_geral_1_2026.pdf",
+    "tamanho": "397 KB",
+    "tipo": "PDF",
+    "hidden": "false"
+  },
+  {
+    "id": 3,
+    "nome": "Relatórios Financeiros 2025 -  Final",
+    "categoria": "Financeiro",
+    "data": "2025-11-25",
+    "descricao": "Balancete das contas do ano de 2025",
+    "arquivo": "documentos/financeiro/financerio-final-mandato-2025.zip",
+    "tamanho": "1,56 MB",
+    "tipo": "ZIP",
+    "hidden": "false"
+  },
+  {
+    "id": 4,
+    "nome": "Ata de Fundação (exemplo)",
+    "categoria": "Atas",
+    "data": "2020-03-22",
+    "descricao": "Ata de fundação da APAC, registrando a criação da associação e seus membros fundadores.",
+    "arquivo": "documentos/ata-fundacao.pdf",
+    "tamanho": "128 KB",
+    "tipo": "PDF",
+    "hidden": "true"
+  },
+  {
+    "id": 5,
+    "nome": "Balanço 2025",
+    "categoria": "Financeiro",
+    "data": "2025-11-25",
+    "descricao": "Balanço Financeiro 2025",
+    "arquivo": "documentos/relatorios/Balanco_2025_assinado.pdf",
+    "tamanho": "152 KB",
+    "tipo": "PDF",
+    "hidden": "true"
+  },
+  {
+    "id": 6,
+    "nome": "D.R.E. 2025",
+    "categoria": "Atas",
+    "data": "2025-11-25",
+    "descricao": "Demosntração do Resultado do Eercício em 31/10/2025",
+    "arquivo": "documentos/relatorios/D._R._E._2025_assinado.pdf",
+    "tamanho": "145 KB",
+    "tipo": "PDF",
+    "hidden": "true"
+  },
+  {
+    "id": 7,
+    "nome": "Código de Conduta (exemplo)",
+    "categoria": "Regulamentos",
+    "data": "2023-09-05",
+    "descricao": "Código de conduta que orienta o comportamento de membros, atletas e colaboradores da APAC.",
+    "arquivo": "documentos/codigo-conduta.pdf",
+    "tamanho": "198 KB",
+    "tipo": "PDF",
+    "hidden": "true"
+  },
+  {
+    "id": 8,
+    "nome": "Plano Estratégico 2024-2026 (exemplo)",
+    "categoria": "Planejamento",
+    "data": "2024-02-28",
+    "descricao": "Plano estratégico da APAC para os próximos três anos, com objetivos e metas.",
+    "arquivo": "documentos/plano-estrategico-2024-2026.pdf",
+    "tamanho": "356 KB",
+    "tipo": "PDF",
+    "hidden": "true"
+  },
+  {
+    "id": 9,
+    "nome": "Política de Privacidade (exemplo)",
+    "categoria": "Editais",
+    "data": "2024-05-01",
+    "descricao": "Política de privacidade e proteção de dados pessoais dos membros da APAC.",
+    "arquivo": "documentos/politica-privacidade.pdf",
+    "tamanho": "87 KB",
+    "tipo": "PDF",
+    "hidden": "true"
+  },
+  {
+    "id": 10,
+    "nome": "Relatório de Atividades 2024 (exemplo)",
+    "categoria": "Relatórios",
+    "data": "2024-11-30",
+    "descricao": "Relatório detalhado das atividades desenvolvidas pela APAC durante o ano de 2024.",
+    "arquivo": "documentos/relatorio-atividades-2024.pdf",
+    "tamanho": "623 KB",
+    "tipo": "PDF",
+    "hidden": "true"
+  },
+  {
+    "id": 11,
+    "nome": "Calendário de Eventos 2025 (exemplo)",
+    "categoria": "Calendários",
+    "data": "2024-12-01",
+    "descricao": "Calendário com todas as competições e eventos previstos para 2025.",
+    "arquivo": "documentos/calendario-eventos-2025.pdf",
+    "tamanho": "145 KB",
+    "tipo": "PDF",
+    "hidden": "true"
+  },
+  {
+    "id": 12,
+    "nome": "Ata da Assembleia Geral 2023 (exemplo)",
+    "categoria": "Atas",
+    "data": "2023-06-15",
+    "descricao": "Ata da Assembleia Geral Ordinária realizada em 15 de junho de 2023.",
+    "arquivo": "documentos/ata-assembleia-2023.pdf",
+    "tamanho": "134 KB",
+    "tipo": "PDF",
+    "hidden": "true"
+  }
+]

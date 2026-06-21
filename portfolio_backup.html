@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio - APAC</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⭐</text></svg>">
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <p>Carregando portfólio...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-star"></i>
+                <span>APAC</span>
+            </div>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link" data-section="home">Home</a>
+                <a href="index.html#quem-somos" class="nav-link" data-section="quem-somos">Quem Somos</a>
+                <a href="index.html#projetos" class="nav-link" data-section="projetos">Projetos</a>
+                <a href="portfolio.html" class="nav-link active" data-section="portfolio">Portfólio</a>
+                <a href="index.html#transparencia" class="nav-link" data-section="transparencia">Transparência</a>
+                <a href="index.html#contato" class="nav-link" data-section="contato">Contato</a>
+            </div>
+            
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="portfolio-hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span class="gradient-text">Portfólio</span> das Atletas
+                    </h1>
+                    <p class="hero-subtitle">
+                        Conheça nossas talentosas atletas, suas histórias e conquistas na patinação artística
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section class="portfolio-section section" id="portfolio">
+            <div class="container">
+                <!-- Search and Filter -->
+                <div class="portfolio-controls">
+                    <div class="search-container">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="search-input" placeholder="Buscar atleta..." class="search-input">
+                    </div>
+                    <div class="sort-container">
+                        <select id="sort-select" class="sort-select">
+                            <option value="name-asc">Nome (A-Z)</option>
+                            <option value="name-desc">Nome (Z-A)</option>
+                            <option value="date-desc">Mais Recente</option>
+                            <option value="date-asc">Mais Antigo</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Athletes Grid -->
+                <div class="athletes-grid" id="athletes-grid">
+                    <!-- Athletes will be loaded here by JavaScript -->
+                </div>
+
+                <!-- Loading State -->
+                <div class="loading-state" id="loading-state">
+                    <div class="loading-spinner"></div>
+                    <p>Carregando atletas...</p>
+                </div>
+
+                <!-- Empty State -->
+                <div class="empty-state" id="empty-state" style="display: none;">
+                    <i class="fas fa-search"></i>
+                    <h3>Nenhuma atleta encontrada</h3>
+                    <p>Tente ajustar os filtros de busca</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <i class="fas fa-star"></i>
+                        <span>APAC</span>
+                    </div>
+                    <p>Fortalecendo a patinação artística através da união, cooperação e apoio mútuo.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#quem-somos">Quem Somos</a></li>
+                        <li><a href="index.html#projetos">Projetos</a></li>
+                        <li><a href="portfolio.html">Portfólio</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> contato@apac.org.br</li>
+                        <li><i class="fas fa-phone"></i> (41) 99999-9999</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Curitiba, PR</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 APAC - Associação dos Pais e Amigos dos Patinadores Artísticos de Curitiba. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Athlete Modal -->
+    <div class="modal" id="athlete-modal">
+        <div class="modal-content">
+            <span class="modal-close" id="modal-close">&times;</span>
+            <div class="modal-body" id="modal-body">
+                <!-- Modal content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="portfolio.js"></script>
+</body>
+</html>

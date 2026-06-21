@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Recibo APAC</title>
+
+    <style>
+        @page {
+            size: A4 portrait;
+            margin: 15mm;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        #recibo {
+            width: 100%;
+            max-width: 180mm;
+            margin: auto;
+            border: 2px solid #003366;
+            padding: 15mm;
+            box-sizing: border-box;
+            font-size: 12.5pt;
+        }
+
+        h2 {
+            font-size: 18pt;
+            margin: 0;
+        }
+
+        h3 {
+            font-size: 15pt;
+            margin: 10px 0;
+        }
+
+        p {
+            font-size: 12.5pt;
+            line-height: 1.4;
+        }
+
+        #recibo {
+            page-break-inside: avoid;
+        }
+
+        button {
+            padding: 10px;
+            background: #003366;
+            color: #fff;
+            border: none;
+            margin-top: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="recibo">
+
+        <div style="display:flex; align-items:center;">
+            <div style="text-align: center;margin-inline: 30px;">
+                <h2 style="margin:0; color:#003366;">APAC</h2>
+                <p style="margin:0;">ASSOCIAÇÃO DE PAIS E AMIGOS DOS <br>PATINADORES ARTÍSTICOS DE CURITIBA – APAC <br>CNPJ: 04.672.966/0001-26</p>
+            </div>
+            <img src="../assets/logo-recibo.jpg" style="height:80px; margin-right:20px;">
+        </div>
+
+        <hr>
+
+        <h3 style="text-align:center;">RECIBO</h3>
+
+        <p>
+            Recebemos de <strong><span id="rNome"></span></strong>,
+            CPF <strong><span id="rCpf"></span></strong>,
+            a quantia de <strong>R$ <span id="rValor"></span></strong>
+            (<span id="rExtenso"></span>),
+            referente a <strong><span id="rReferencia"></span></strong>.
+        </p>
+
+        <p>Curitiba, <span id="rData"></span></p>
+
+        <br><br><br>
+        <div style="text-align: center;">
+            <p style="font-size: 12.5px;">O valor acima foi devidamente recebido, conferindo ao presente recibo plena
+                validade legal.
+                Associação representada por Evandro Machado — CPF 709.448.060-15.
+            </p>
+            <br>
+            <p>______________________________</p>
+            <strong>Evandro Machado</strong>
+            <p style="font-size: 8px;">Presidente da ASSOCIAÇÃO DE PAIS E AMIGOS DOS PATINADORES ARTÍSTICOS DE CURITIBA – APAC</p>
+        </div>
+    </div>
+
+    <button onclick="gerarPDF()">Baixar PDF</button>
+
+    <script src="extenso.js"></script>
+    <script src="html2pdf.bundle.min.js"></script>
+
+
+    <script>
+        const dados = JSON.parse(localStorage.getItem("dadosRecibo"));
+
+        if (!dados || !dados.valor) {
+            alert("Erro: dados do recibo não encontrados.");
+        } else {
+
+            const valorNumerico = Number(
+                dados.valor.toString().replace(",", ".")
+            );
+
+            document.getElementById("rNome").innerText = dados.nome;
+            document.getElementById("rCpf").innerText = dados.cpf;
+            document.getElementById("rValor").innerText =
+                valorNumerico.toFixed(2).replace(".", ",");
+
+            document.getElementById("rExtenso").innerText =
+                valorPorExtenso(valorNumerico);
+
+            document.getElementById("rReferencia").innerText = dados.referencia;
+            document.getElementById("rData").innerText = dados.data;
+        }
+
+        function gerarPDF() {
+            html2pdf()
+                .from(document.getElementById("recibo"))
+                .set({
+                    margin: [15, 15, 15, 15],
+                    filename: `recibo-${dados.nome}.pdf`,
+                    html2canvas: {
+                        scale: 2,
+                        useCORS: true
+                    },
+                    jsPDF: {
+                        unit: "mm",
+                        format: "a4",
+                        orientation: "portrait"
+                    }
+                })
+                .save();
+        }
+    </script>
+
+
+</body>
+
+</html>

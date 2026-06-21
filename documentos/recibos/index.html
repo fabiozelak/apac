@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Recibos - APAC</title>
+    <link rel="apple-touch-icon" sizes="180x180" href=../../favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon/favicon-16x16.png">
+    <link rel="manifest" href="../../favicon/site.webmanifest">
+    <link rel="stylesheet" href="../../../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f8f9fa;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        h1 {
+            color: #004a8d;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #666666;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .search-section {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-section h2 {
+            color: #004a8d;
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .search-input-group {
+            display: flex;
+            gap: 12px;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid #d0d0d0;
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #004a8d;
+            box-shadow: 0 0 0 3px rgba(0, 74, 141, 0.1);
+        }
+
+        button {
+            padding: 12px 28px;
+            background-color: #004a8d;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            white-space: nowrap;
+        }
+
+        button:hover {
+            background-color: #003366;
+            box-shadow: 0 2px 8px rgba(0, 74, 141, 0.3);
+        }
+
+        button:active {
+            background-color: #002244;
+        }
+
+        .info-text {
+            font-size: 13px;
+            color: #666666;
+            text-align: center;
+            margin-top: 16px;
+        }
+
+        .results-section {
+            display: none;
+        }
+
+        .results-section.active {
+            display: block;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px 20px;
+            background: white;
+            border-radius: 8px;
+            color: #e74c3c;
+            font-size: 16px;
+            display: none;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .no-results.active {
+            display: block;
+        }
+
+        .table-wrapper {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            display: none;
+            overflow-x: auto;
+        }
+
+        .table-wrapper.active {
+            display: block;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        thead {
+            background-color: #f0f2f5;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        th {
+            padding: 16px;
+            text-align: left;
+            font-weight: 600;
+            color: #004a8d;
+            font-size: 14px;
+        }
+
+        td {
+            padding: 16px;
+            border-bottom: 1px solid #f0f2f5;
+            font-size: 14px;
+        }
+
+        tbody tr:hover {
+            background-color: #fafbfc;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* a {
+            color: #004a8d;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #003366;
+            text-decoration: underline;
+        } */
+
+        .not-available {
+            color: #999999;
+            font-style: italic;
+        }
+
+        .result-count {
+            color: #666666;
+            font-size: 13px;
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+
+        .cpf-display {
+            color: #666666;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 16px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .search-input-group {
+                flex-direction: column;
+            }
+
+            input[type="text"],
+            button {
+                width: 100%;
+            }
+
+            th, td {
+                padding: 12px 8px;
+                font-size: 12px;
+            }
+
+            .search-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+     <!-- Loading Animation -->
+    <div class="loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <p>Carregando documentos...</p>
+        </div>
+    </div>
+
+<!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-icon">
+                    <img src="../../assets/logo.png" style="border-radius: 50%; width: 3rem;" alt="" srcset="">
+                </div>
+                <!-- <span class="logo-text">APAC</span> -->
+            </div>
+            
+ <!-- Desktop Menu -->
+            <div class="nav-menu" id="nav-menu">
+                <a href="../index.html" class="nav-link" data-section="home">Home</a>
+                <a href="../index.html#quem-somos" class="nav-link" data-section="quem-somos">Quem Somos</a>
+                <a href="../index.html#projetos" class="nav-link" data-section="projetos">Projetos</a>
+                <a href="../portfolio.html" class="nav-link" data-section="portfolio">Atletas</a>
+                <a href="../index.html#transparencia" class="nav-link active" data-section="transparencia">Transparência</a>
+                <a href="../index.html#contato" class="nav-link" data-section="contato">Contato</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+<div class="container">
+        <header>
+            <h1>Consulta de Recibos</h1>
+            <p class="subtitle">APAC - Associação dos Pais e Amigos dos Patinadores Artísticos</p>
+        </header>
+
+        <div class="search-section">
+            <h2>Buscar por CPF</h2>
+            <div class="search-box">
+                <div class="search-input-group">
+                    <input type="text" id="cpfInput" placeholder="Digite o CPF (apenas números)..." maxlength="14">
+                    <button onclick="buscar()">Buscar</button>
+                </div>
+            </div>
+            <p class="info-text">Digite o CPF do aluno para localizar seus recibos de anuidade, taxas de brasileiro e taxas paranaenses.</p>
+            <p class="info-text">Atualizado em 14/04/2026</p>
+        </div>
+
+        <div class="results-section" id="resultsSection">
+            <div class="result-count" id="resultCount"></div>
+            <div class="table-wrapper" id="tableWrapper">
+                <table id="resultsTable">
+                    <thead>
+                        <tr>
+                            <th>Aluno</th>
+                            <th>CPF</th>
+                            <th>Anuidade 2026</th>
+                            <th>Taxas Brasileiro</th>
+                            <th>Taxas Paranaense</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultsBody"></tbody>
+                </table>
+            </div>
+            <div id="noResults" class="no-results">Nenhum registro encontrado para este CPF.</div>
+        </div>
+    </div>
+
+    <script>
+        const data = [
+  {
+    "aluno": "ANA CAROLINA JANECZKO NAVARRO",
+    "cpf": "10783542941",
+    "recibo_anuidade": {
+      "name": "recibo-ANA CAROLINA JANECZKO NAVARRO.pdf",
+      "link": "https://drive.google.com/file/d/19edGIpuWI_MVvIGPev92QpocBAasMFw4/view"
+    },
+    "recibo_taxa_brasileiro": {
+      "name": "recibo-ANA CAROLINA NAVARRO.pdf",
+      "link": "https://drive.google.com/file/d/1Y5u5juADpBOKE-6J52PJY-AalPIp3YT5/view"
+    },
+    "recibo_taxa_paranaense": {
+      "name": "recibo-ANA CAROLINA NAVARRO.pdf",
+      "link": "https://drive.google.com/file/d/1mS8rz2I617cCshPRoLlNsc8jgiH_OEqz/view"
+    }
+  },
+  {
+    "aluno": "ANA CAROLINA POGLIA BRENNER",
+    "cpf": "09199228998",
+    "recibo_anuidade": {
+      "name": "recibo-ANA CAROLINA POGLIA BRENNER.pdf",
+      "link": "https://drive.google.com/file/d/1JxOT-WUzBUFE-4r99tXIA3ys-Rwn-DFo/view"
+    },
+    "recibo_taxa_brasileiro": {
+      "name": "recibo-ANA CAROLINA BRENNER.pdf",
+      "link": "https://drive.google.com/file/d/1b2kP0UqeMLzCX46yJpq1L8mdQ2NwixTu/view"
+    },
+    "recibo_taxa_paranaense": {
+      "name": "recibo-ANA CAROLINA BRENNER (1).pdf",
+      "link": "https://drive.google.com/file/d/1K0d3JWtnnYbsk4mF0i7FaAw2ICoH0xxs/view"
+    }
+  },
+  {
+    "aluno": "ANA CECÍLIA FERREIRA MONTEIRO",
+    "cpf": "15275118988",
+    "recibo_anuidade": {
+      "name": "recibo-ANA CECILIA MONTEIRO.pdf",
+      "link": "https://drive.google.com/file/d/1AKWrQtCDXum5kcR9rMtRRu62CzcCtOLK/view"
+    },
+    "recibo_taxa_brasileiro": {
+      "name": "recibo-ANA CECILIA MONTEIRO.pdf",
+      "link": "https://drive.google.com/file/d/1ZvJdFdFU5wxIUn7pjCUb418UJKftiuqH/view"
+    },
+    "recibo_taxa_paranaense": {
+      "name": "recibo-ANA CECILIA MONTEIRO.pdf",
+      "link": "https://drive.google.com/file/d/1V_qdWl0tnF4-gT8pmiP56FHdGCA3VQS2/view"
+    }
+  },
+  {
+    "aluno": "ANA  DE SOUZA FOFANO",
+    "cpf": "14439575935",
+    "recibo_anuidade": {
+      "name": "recibo-ANA DE SOUZA FOFANO.pdf",
+      "link": "https://drive.google.com/file/d/1v8lKHDyQGQuXuG3OqX5NMNwnJiXY8ldX/view"
+    },
+    "recibo_taxa_brasileiro": null,
+    "recibo_taxa_paranaense": {
+      "name": "recibo-ANA DE SOUZA FOFANO.pdf",
+      "link": "https://drive.google.com/file/d/1bDn1l0011GRw70c89DYAFHz1WDgWtu3F/view"
+    }
+  },
+  {
+    "aluno": "ANA JULIA PONTES",
+    "cpf": "0",
+    "recibo_anuidade": null,
+    "recibo_taxa_brasileiro": null,
+    "recibo_taxa_paranaense": {
+      "name": "recibo-ANA JULIA PONTES.pdf",
+      "link": "https://drive.google.com/file/d/199h9sYlT8qBsjxKNF0Y9Ltp27vCxZZ50/view"
+    }
+  },
+  {
+    "aluno": "ANA LAURA VALDOSKI DOS SANTOS",
+    "cpf": "12189426901",
+    "recibo_anuidade": {
+      "name": "recibo-_ANA LAURA VALDOSKI.pdf",
+      "link": "https://drive.google.com/file/d/19uPINeTe440s25eLs_oCifbYaULADLKH/view"
+    },
+    "recibo_taxa_brasileiro": {
+      "name": "recibo-ANA LAURA VALDOSKI.pdf",
+      "link": "https://drive.google.com/file/d/13k8fvxFL0bhf7wzV4OVqKHG2LUS7e4-T/view"
+    },
+    "recibo_taxa_paranaense": {
+      "name": "recibo-ANA LAURA VALDOSKI.pdf",
+      "link": "https://drive.google.com/file/d/1SJ_456AowdH4HKZ9UvF-YhQ7YUw-njxN/view"
+    }
+  },
+  {
+    "aluno": "ANNA ROSA SILVEIRA",
+    "cpf": "57205124972",
+    "recibo_anuidade": {
+      "name": "recibo-ANNA ROSA SILVEIRA.pdf",
+      "link": "https://drive.google.com/file/d/1YIeLVcnr7sGaVQwBYrR5pRjNDV71biox/view"
+    },
+    "recibo_taxa_brasileiro": {
+      "name": "recibo-ANNA ROSA SILVEIRA.pdf",
+      "link": "https://drive.google.com/file/d/1hNIJlUSfD_kldTgGRGLNCAw-aqdra6Vd/view"
+    },
+    "recibo_taxa_paranaense": {
+      "name": "recibo-ANNA ROSA SILVEIRA.pdf",
+      "link": "https://drive.google.com/file/d/1GGnZf8uHQh0jg9VhWSu2kwySTBrraHI7/view"
+    }
+  },
+  {
+    "aluno": "ANTONELLA MARCOVICZ",
+    "cpf": "11677991941",
+    "recibo_anuidade": {
+      "name": "recibo-ANTONELLA MARCOVICZ.pdf",
+      "link": "https://drive.google.com/file/d/1HsjZkbsEpUA258xBeRi2b1fCjUNpw34y/view"
+    },
+    "recibo_taxa_brasileiro": {
+      "name": "recibo-ANTONELLA MARCOVICZ.pdf",
+      "link": "https://drive.google.com/file/d/1Rz4udMMDcWyPk5tKlFMlwuj357iaz6oq/view"
+    },
+    "recibo_taxa_paranaense": {
+      "name": "recibo-ANTONELLA MARCOVICZ.pdf",
+      "link": "https://drive.google.com/file/d/1CiNA6VJ2p_Vcgr7uShUGpKHEUXjZUzSB/view"
+    }
+  },
+  {
+    "aluno": "BEATRIZ STABEN ALVES",
+    "cpf": "13841733905",
+    "recibo_anuidade": {
+      "name": "recibo-BEATRIZ STABEN ALVES.pdf",
+      "link": "https://drive.google.com/file/d/17RqxuVNYjR9bVq8sm76veyhAztK2ViO2/view"
+    },
+    "recibo_taxa_brasileiro": null,
+    "recibo_taxa_paranaense": {
+      "name": "recibo-BEATRIZ STABEN ALVES.pdf",
+      "link": "https://drive.google.com/file/d/1ztsjSaOnPhtsbPglEeAtoXyibDX9MyVj/view"
+    }
+  },
+  {
+    "aluno": "BRUNO PADULA SUZUKI",
+    "cpf": "13476280969",
+    "recibo_anuidade": {
+      "name": "recibo-BRUNO SUZUKI.pdf",
+      "link": "https://drive.google.com/file/d/1uWObMpfl2OW1TItBcrK3RfJKebZuRAyd/view"
+    },
+    "recibo_taxa_brasileiro": {
+      "name": "recibo-BRUNO SUZUKI.pdf",
+      "link": "https://drive.google.com/file/d/1rSGLYHxEWsHFc9vRzZEbKPeFlqGajxd3/view"
+    },
+    "recibo_taxa_paranaense": {
+      "name": "recibo-BRUNO SUZUKI.pdf",
+      "link": "https://drive.google.com/file/d/1SIUXCx7Q0wN3c0CGoFxpsazFW71EQ3nG/view"
+    }
+  },
+  {
+    "aluno": "CAMILA SULZBACH",
+    "cpf": "",
+    "recibo_anuidade": {
+      "name": "recibo-CAMILA SULZBACH.pdf",
+      "link": "https://drive.google.com/file/d/10xrko4kDMkFG-WJzQSRMXOmCVKoY7fVJ/view"
+    },
+    "recibo_taxa_brasileiro": null,
+    "recibo_taxa_paranaense": {
+      "name": "recibo-CAMILA SULZBACH.pdf",
+      "link": "https://drive.google.com/file/d/1SnSlRvTSkeHtfSX20hpS6ogXn9iNhG51/view"
+    }
+  },
+  {
+    "aluno": "CAROLINA MALSCHITZKY MATOS",
+    "cpf": "",
+    "recibo_anuidade": {
+      "name": "recibo-CAROLINA MALSCHITZKY MATOS.pdf",
+      "link": "https://drive.google.com/file/d/1OU8BP9kJYMlTDPHHSRzMLy9lwmT0tHN1/view"
+    },
+    "recibo_taxa_brasileiro": null,
+    "recibo_taxa_paranaense": {
+      "name": "recibo-CAROLINA MALSCHITZKY MATOS.pdf",
+      "link": "https://drive.google.com/file/d/10XsPCd5jzaozNmto9GK3vr2YxYotArDF/view"
+    }
+  },
+  {
+    "aluno": "FERNANDA VILAS BOAS ANTUNES",
+    "cpf": "59411005829",
+    "recibo_anuidade": {
+      "name": "recibo-FERNANDA VILAS BOAS ANTUNES.pdf",
+      "link": "https://drive.google.com/file/d/1e-FmwE4zpmqYVL9BO2EuNXdNlf52Qe2l/view"
+    },
+    "recibo_taxa_brasileiro": {
+      "name": "recibo-FERNANDA VILAS BOAS ANTUNES.pdf",
+      "link": "https://drive.google.com/file/d/13HzMAdo3iZjSwjEZoM34FjNuxUBuXswS/view"
+    },
+    "recibo_taxa_paranaense": {
+      "name": "recibo-FERNANDA VILAS BOAS ANTUNES.pdf",
+      "link": "https://drive.google.com/file/d/1hFkq_k6hhcjeKN7r2n-qbJ_yeyVwlIe8/view"
+    }
+  },
+  {
+    "aluno": "HELENA LIZ",
+    "cpf": "0",
+    "recibo_anuidade": null,
+    "recibo_taxa_brasileiro": null,
+    "recibo_taxa_paranaense": {
+      "name": "recibo-HELENA LIZ CACIANO.pdf",
+      "link": "https://drive.google.com/file/d/1H5NS9jxWKUKQj1TUfUBdfgkB3duOcIsd/view"
+    }
+  },
+  {
+    "aluno": "ISABELLE ORSINI",
+    "cpf": "0",
+    "recibo_anuidade": {
+      "name": "recibo-ISABELLE ORSINI DA SILVA.pdf",
+      "link": "https://drive.google.com/file/d/17KcuX8uzXwJp2WssTHdTPrEeyRzhDJ45/view"
+    },
+    "recibo_taxa_brasileiro": null,
+    "recibo_taxa_paranaense": {
+      "name": "recibo-ISABELLE ORSINI DA SILVA.pdf",
+      "link": "https://drive.google.com/file/d/1fR9h-0QcC1Hwwe47l5PG3tL3vbOfXwkL/view"
+    }
+  },
+  {
+    "aluno": "LAÍSA CASAGRANDE",
+    "cpf": "0",
+    "recibo_anuidade": null,
+    "recibo_taxa_brasileiro": null,
+    "recibo_taxa_paranaense": {
+      "name": "recibo-LAISA CASAGRANDE.pdf",
+      "link": "https://drive.google.com/file/d/1eWOJFnZfW4dG7bXi9UgdaBMNT6ffVUrN/view"
+    }
+  },
+  {
+    "aluno": "LARA VALENTIN KRUCHELSKI MACHADO",
+    "cpf": "",
+    "recibo_anuidade": {
+      "name": "recibo-LARA VALENTIN KRUCHELSKI MACHADO.pdf",
+      "link": "https://drive.google.com/file/d/17nEvVJ-lqJtM36EzxGN-0m5oa9c9oFjd/view"
+    },
+    "recibo_taxa_brasileiro": null,
+    "recibo_taxa_paranaense": {
+      "name": "recibo-LARA VALENTIN KRUCHELSKI MACHADO.pdf",
+      "link": "https://drive.google.com/file/d/1ZSEb1Lv9Y7Wc4YzaIippEuvD9Ol-gtnB/view"
+    }
+  },
+  {
+    "aluno": "LAURA AURORA",
+    "cpf": "14781345930",
+    "recibo_anuidade": {
+      "name": "recibo-LAURA AURORA Filiacao.pdf",
+      "link": "https://drive.google.com/file/d/1uhGUhnxrXYm2XLxcFtxjCDp9qErSFief/view"
+    },
+    "recibo_taxa_brasileiro": null,
+    "recibo_taxa_paranaense": {
+      "name": "recibo-LAURA AURORA DAMASIO PEREIRA.pdf",
+      "link": "https://drive.google.com/file/d/1NloT-cXlrE4e25oFLEOdr5SZnG8FeW_x/view"
+    }
+  },
+  {
+    "aluno": "LAURA CATERINI VON BELOW DE LIZ",
+    "cpf": "11346896917",
+    "recibo_anuidade": {
+      "name": "recibo-LAURA CATERINI VON BELOW DE LIZ.pdf",
+      "link": "https://drive.google.com/file/d/13vYMqWCtEduwqdFx81vW_ndi0JwHNpbl/view"
+    },
+    "recibo_taxa_brasileiro": null,
+    "recibo_taxa_paranaense": {
+      "name": "recibo-LAURA CATERINI VON BELOW DE LIZ.pdf",
+      "link": "https://drive.google.com/file/d/1I6vZgmnspeMN0ItA6eFvZsL_BpAHfSTu/view"
+    }
+  },
+  {
+    "aluno": "LAURA MACHADO",
+    "cpf": "15389361946",
+    "recibo_anuidade": {
+      "name": "recibo-LAURA MACHADO.pdf",
+      "link": "https://drive.google.com/file/d/1Eja1pF60kVgvIo1_06G1L6V4gr2_c-HO/view"
+    },
+    "recibo_taxa_brasileiro": {
+      "name": "recibo-LAURA LINHARES MACHADO.pdf",
+      "link": "https://drive.google.com/file/d/1NC1H0RQhE4uQqC5ukQzBZ_91kyDy5r7L/view"
+    },
+    "recibo_taxa_paranaense": {
+      "name": "recibo-LAURA LINHARES MACHADO.pdf",
+      "link": "https://drive.google.com/file/d/17Ms0NXokbUBAo3ybz3Wr4dyVJCAmmjqM/view"
+    }
+  },
+  {
+    "aluno": "LAURA NOGUEIRA ZANATTA",
+    "cpf": "11503359980",
+    "recibo_anuidade": {
+      "name": "recibo-LAURA ZANATTA.pdf",
+      "link": "https://drive.google.com/file/d/1FOqjX_2QYU7Ic-MfAaTCzJncmt8_m07q/view"
+    },
+    "recibo_taxa_brasileiro": {
+      "name": "recibo-LAURA ZANATTA.pdf",
+      "link": "https://drive.google.com/file/d/1SHVCSLaYdp2otOSy33X8XBBfIwiLMKt9/view"
+    },
+    "recibo_taxa_paranaense": {
+      "name": "recibo-LAURA ZANATTA.pdf",
+      "link": "https://drive.google.com/file/d/1Yc7AKhrGRg62B5C5Z45QHBEC9IwrrOi-/view"
+    }
+  },
+  {
+    "aluno": "LAURA TRANCOSO RAMOS",
+    "cpf": "10225313952",
+    "recibo_anuidade": null,
+    "recibo_taxa_brasileiro": null,
+    "recibo_taxa_paranaense": {
+      "name": "recibo-LAURA TRANCOSO RAMOS.pdf",
+      "link": "https://drive.google.com/file/d/1Y7-5w6DN_5KX2tdMwXVaYYtao0alFiFO/view"
+    }
+  },
+  {
+    "aluno": "LETÍCIA SHIMODA DE CARVALHO",
+    "cpf": "10713854960",
+    "recibo_anuidade": {
+      "name": "recibo-LETÍCIA SHIMODA DE CARVALHO.pdf",
+      "link": "https://drive.google.com/file/d/19QtCtErLBwYORMIoBbnkklL1hcztjGn6/view"
+    },
+    "recibo_taxa_brasileiro": {
+      "name": "recibo-LETICIA SHIMODA.pdf",
+      "link": "https://drive.google.com/file/d/19ft04fqAziw9D8mqUnxunPX80FqWYoiY/view"
+    },
+    "recibo_taxa_paranaense": {
+      "name": "recibo-LETICIA SHIMODA.pdf",
+      "link": "https://drive.google.com/file/d/1KuG3M68pQthruh2m-LyF1qPaKzboptRz/view"
+    }
+  },
+  {
+    "aluno": "LOUISE CRISTINE FERREIRA MONTEIRO",
+    "cpf": "09919972983",
+    "recibo_anuidade": {
+      "name": "recibo-LOUISE MONTEIRO.pdf",
+      "link": "https://drive.google.com/file/d/15aaFTZSpFN-N5Gb8u6xJRwpGKLcrjtET/view"
+    },
+    "recibo_taxa_brasileiro": {
+      "name": "recibo-LOUISE MONTEIRO.pdf",
+      "link": "https://drive.google.com/file/d/19Wrx4Xg5yHXWOCe2JQEETg_KDWQCfjdp/view"
+    },
+    "recibo_taxa_paranaense": {
+      "name": "recibo-LOUISE MONTEIRO.pdf",
+      "link": "https://drive.google.com/file/d/1ctwno8boJO5fxPoc8VbvpPdLyrunK6je/view"
+    }
+  },
+  {
+    "aluno": "LUANA LEÃO NOVACKI",
+    "cpf": "07819502959",
+    "recibo_anuidade": {
+      "name": "recibo-Luana Leão Novacki (ANUIDADE).pdf",
+      "link": "https://drive.google.com/file/d/17ofuUY_Q_oFykAn43WCT-3OJ6OWRlgvD/view"
+    },
+    "recibo_taxa_brasileiro": null,
+    "recibo_taxa_paranaense": null
+  },
+  {
+    "aluno": "LUIZA ALCANTARA ZARUGNER",
+    "cpf": "",
+    "recibo_anuidade": null,
+    "recibo_taxa_brasileiro": null,
+    "recibo_taxa_paranaense": {
+      "name": "recibo-LUIZA ALCANTARA.pdf",
+      "link": "https://drive.google.com/file/d/13nd_SLNivNC-HFXMVqvhBVBnY2zulVZj/view"
+    }
+  },
+  {
+    "aluno": "LUIZA ASSAOKA TOMAZELA",
+    "cpf": "52738405894",
+    "recibo_anuidade": {
+      "name": "recibo-LUIZA ASSAOKA TOMAZELA.pdf",
+      "link": "https://drive.google.com/file/d/12FCdz7qyoB1vo9JA6XjqKxKTSfWo3EuY/view"
+    },
+    "recibo_taxa_brasileiro": {
+      "name": "recibo-LUIZA  ASSAOKA TOMAZELA.pdf",
+      "link": "https://drive.google.com/file/d/1S_45K2X1bmmRCLHIFxwcCFl7FheUl4PQ/view"
+    },
+    "recibo_taxa_paranaense": {
+      "name": "recibo-LUIZA TOMAZELA.pdf",
+      "link": "https://drive.google.com/file/d/186tol22ha_PC5f-iZCIg7Dbi-TS1MRhr/view"
+    }
+  },
+  {
+    "aluno": "LUIZA HELENA NAKASAKI BUTKA",
+    "cpf": "12594583936",
+    "recibo_anuidade": {
+      "name": "recibo-LUIZA HELENA NAKASAKI BUTKA.pdf",
+      "link": "https://drive.google.com/file/d/1Z78tYjznNNaeTaB5U_PdE-02LHT0oXGe/view"
+    },
+    "recibo_taxa_brasileiro": null,
+    "recibo_taxa_paranaense": {
+      "name": "recibo-LUIZA BUTKA.pdf",
+      "link": "https://drive.google.com/file/d/1OXWkntKQDcXEcokhnS3D2hDbfXLrmZJx/view"
+    }
+  },
+  {
+    "aluno": "MANOELLA FERNANDES CAMPANA MAIA",
+    "cpf": "",
+    "recibo_anuidade": null,
+    "recibo_taxa_brasileiro": null,
+    "recibo_taxa_paranaense": null
+  },
+  {
+    "aluno": "MANUELA VILAS BOAS ANTUNES",
+    "cpf": "59411024882",
+    "recibo_anuidade": {
+      "name": "recibo-MANUELA VILAS BOAS ANTUNES.pdf",
+      "link": "https://drive.google.com/file/d/1cT3O308lSVvyPTPwg7XtyAu92z-tvaxW/view"
+    },
+    "recibo_taxa_brasileiro": {
+      "name": "recibo-MANUELA VILAS BOAS ANTUNES.pdf",
+      "link": "https://drive.google.com/file/d/1Maq3F4Ep1CelsGXx-TJBvT-vZqIrSW7J/view"
+    },
+    "recibo_taxa_paranaense": {
+      "name": "recibo-MANUELA VILAS BOAS ANTUNES.pdf",
+      "link": "https://drive.google.com/file/d/1B73VPam3LCbfOvsb7fTc4zsRpYFhCHl6/view"
+    }
+  },
+  {
+    "aluno": "MANUELA YUMI DOS SANTOS NAKANO",
+    "cpf": "08730235952",
+    "recibo_anuidade": {
+      "name": "recibo-MANUELA NAKANO.pdf",
+      "link": "https://drive.google.com/file/d/1BUq14KJsHFjy04MmHHajb-UjapOpnfgm/view"
+    },
+    "recibo_taxa_brasileiro": {
+      "name": "recibo-MANUELA YUMI DOS SANTOS NAKANO.pdf",
+      "link": "https://drive.google.com/file/d/17eFh-x1kMVUhwNzgfrFSfT1njOUa6_Wz/view"
+    },
+    "recibo_taxa_paranaense": {
+      "name": "recibo-MANUELA NAKANO.pdf",
+      "link": "https://drive.google.com/file/d/1NxbsnPSCaf83djFyNIzHP-n5Xm75ihmw/view"
+    }
+  },
+  {
+    "aluno": "MARIA FERNANDA TAVEIRA CAMARGO",
+    "cpf": "0",
+    "recibo_anuidade": null,
+    "recibo_taxa_brasileiro": null,
+    "recibo_taxa_paranaense": {
+      "name": "recibo-MARIA FERNANDA TAVEIRA CAMARGO.pdf",
+      "link": "https://drive.google.com/file/d/1f3E-95r1WB4kVAwzNACURvpPyyuVdwQf/view"
+    }
+  },
+  {
+    "aluno": "MARIA FERNANDA CARONE SARRAF",
+    "cpf": "11768707936",
+    "recibo_anuidade": null,
+    "recibo_taxa_brasileiro": null,
+    "recibo_taxa_paranaense": {
+      "name": "recibo-MARIA FERNANDA SARRAF.pdf",
+      "link": "https://drive.google.com/file/d/1LiNtCklZZWa48Nh40mmOoLALfsdVAAbn/view"
+    }
+  },
+  {
+    "aluno": "MARIANA PALMERIO REICHERT",
+    "cpf": "14856509926",
+    "recibo_anuidade": null,
+    "recibo_taxa_brasileiro": null,
+    "recibo_taxa_paranaense": {
+      "name": "recibo-MARIANA REICHERT.pdf",
+      "link": "https://drive.google.com/file/d/1BjvQ_9VEEJDiOIsasjunm7XyXiKqjW4_/view"
+    }
+  },
+  {
+    "aluno": "MARTINA KAUFMANN",
+    "cpf": "0",
+    "recibo_anuidade": {
+      "name": "recibo-MARTINA KAUFMANN.pdf",
+      "link": "https://drive.google.com/file/d/1Tv3EAgTFSVYi8WtX2dGaFe71brPkIN0V/view"
+    },
+    "recibo_taxa_brasileiro": {
+      "name": "recibo-MARTINA KAUFMANN.pdf",
+      "link": "https://drive.google.com/file/d/1wz36xauFio-gtaSvvxiBUnA5Siwro4vt/view"
+    },
+    "recibo_taxa_paranaense": {
+      "name": "recibo-MARTINA KAUFMANN.pdf",
+      "link": "https://drive.google.com/file/d/12GiQYUJmajm5gbNwPDQyAUHYjkknNdBV/view"
+    }
+  },
+  {
+    "aluno": "MAYSA VEIGA",
+    "cpf": "12831048907",
+    "recibo_anuidade": {
+      "name": "recibo-MAYSA VEIGA.pdf",
+      "link": "https://drive.google.com/file/d/1BmXMvAghnvtoxzyRG7bkPPMV5c2dA5ei/view"
+    },
+    "recibo_taxa_brasileiro": {
+      "name": "recibo-MAYSA VEIGA.pdf",
+      "link": "https://drive.google.com/file/d/1wEYLdhvdfkHwcEbBpEnn1EsdXwN9bZ2m/view"
+    },
+    "recibo_taxa_paranaense": {
+      "name": "recibo-MAYSA VEIGA.pdf",
+      "link": "https://drive.google.com/file/d/1cAXtu1WHmsKJ-v-NKF58gG_Sm4VimSHi/view"
+    }
+  },
+  {
+    "aluno": "MILENA RAMOS SILVA",
+    "cpf": "06631437130",
+    "recibo_anuidade": {
+      "name": "recibo-MILENA RAMOS.pdf",
+      "link": "https://drive.google.com/file/d/1SwHL_iPFh7Gyhvxze95crkgruR6VedxB/view"
+    },
+    "recibo_taxa_brasileiro": {
+      "name": "recibo-MILENA RAMOS.pdf",
+      "link": "https://drive.google.com/file/d/1KSSC1EhqIlLqaT0PL73R-1DS9jP0x7Zn/view"
+    },
+    "recibo_taxa_paranaense": {
+      "name": "recibo-MILENA RAMOS.pdf",
+      "link": "https://drive.google.com/file/d/141KiMfVwoQ9X0sB8C0qxzD2RMf5YXawT/view"
+    }
+  },
+  {
+    "aluno": "PAOLA BERARDI SABEI",
+    "cpf": "11525012916",
+    "recibo_anuidade": {
+      "name": "recibo-PAOLA BERARDI SABEI.pdf",
+      "link": "https://drive.google.com/file/d/1K6Wai_ZXHFuSzVuzyfEkydrV2MsWveig/view"
+    },
+    "recibo_taxa_brasileiro": {
+      "name": "recibo-PAOLA SABEI.pdf",
+      "link": "https://drive.google.com/file/d/12wbR2eDNR4GAJX9p-1V6RShrmkw5GXlm/view"
+    },
+    "recibo_taxa_paranaense": {
+      "name": "recibo-PAOLA SABEI.pdf",
+      "link": "https://drive.google.com/file/d/1DiwtQ_JIXX7vXsKmGqlIfl2GihbikEGI/view"
+    }
+  },
+  {
+    "aluno": "PIETRA NASCIMENTO FERREIRA DOS SANTOS",
+    "cpf": "",
+    "recibo_anuidade": null,
+    "recibo_taxa_brasileiro": null,
+    "recibo_taxa_paranaense": {
+      "name": "recibo-PIETRA NASCIMENTO FERREIRA DOS SANTOS.pdf",
+      "link": "https://drive.google.com/file/d/12_P8GQvvGgTVC_PCgTPMqHVQ0TSH7T_p/view"
+    }
+  },
+  {
+    "aluno": "RHENATA VOLPATO MEIRELES DA SILVA",
+    "cpf": "",
+    "recibo_anuidade": {
+      "name": "recibo-RHENATA VOLPATO MEIRELES DA SILVA.pdf",
+      "link": "https://drive.google.com/file/d/1yaQKDmPm3uzibNYk1MFw94qL5fN1auUi/view"
+    },
+    "recibo_taxa_brasileiro": null,
+    "recibo_taxa_paranaense": {
+      "name": "recibo-RHENATA VOLPATO MEIRELES DA SILVA.pdf",
+      "link": "https://drive.google.com/file/d/1DhEhlUm9aaX7Uo-zdT3SgokeYkFfSq_R/view"
+    }
+  },
+  {
+    "aluno": "STELLA BARTH ZELAK",
+    "cpf": "11312811951",
+    "recibo_anuidade": {
+      "name": "recibo-STELLA BARTH ZELAK.pdf",
+      "link": "https://drive.google.com/file/d/1TpBCCD5-Pj9D34aFYb-o1ccD0h9iFzyr/view"
+    },
+    "recibo_taxa_brasileiro": {
+      "name": "recibo-STELLA BARTH ZELAK.pdf",
+      "link": "https://drive.google.com/file/d/1HCGYMptVoWwllxEOzPEF4N2lftZoeOdq/view"
+    },
+    "recibo_taxa_paranaense": null
+  },
+  {
+    "aluno": "VALENTINA NEVES",
+    "cpf": "0",
+    "recibo_anuidade": {
+      "name": "recibo-_VALENTINA RANGEL NEVES.pdf",
+      "link": "https://drive.google.com/file/d/1a-iE_YP-lL1MeAizODf03cGtBSBcbEdU/view"
+    },
+    "recibo_taxa_brasileiro": null,
+    "recibo_taxa_paranaense": null
+  }
+];
+
+        function formatarCPF(cpf) {
+            if (!cpf) return '';
+            const clean = cpf.replace(/\D/g, '');
+            if (clean.length !== 11) return cpf;
+            return clean.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+        }
+
+        function buscar() {
+            const input = document.getElementById('cpfInput').value.replace(/\D/g, '');
+            const body = document.getElementById('resultsBody');
+            const table = document.getElementById('tableWrapper');
+            const noResults = document.getElementById('noResults');
+            const resultsSection = document.getElementById('resultsSection');
+            const resultCount = document.getElementById('resultCount');
+            
+            body.innerHTML = '';
+            
+            if (!input) {
+                resultsSection.classList.remove('active');
+                return;
+            }
+
+            const filtered = data.filter(item => item.cpf === input && input !== '');
+
+            resultsSection.classList.add('active');
+
+            if (filtered.length > 0) {
+                resultCount.textContent = `${filtered.length} registro(s) encontrado(s)`;
+                
+                filtered.forEach(item => {
+                    const row = document.createElement('tr');
+                    
+                    const linkAnuidade = item.recibo_anuidade 
+                        ? `<a href="${item.recibo_anuidade}" target="_blank">📄 Abrir</a>` 
+                        : '<span class="not-available">-</span>';
+                        
+                    const linkTaxa = item.recibo_taxa_brasileiro 
+                        ? `<a href="${item.recibo_taxa_brasileiro}" target="_blank">📄 Abrir</a>` 
+                        : '<span class="not-available">-</span>';
+
+                    const linkParanaense = item.recibo_taxa_paranaense 
+                        ? `<a href="${item.recibo_taxa_paranaense}" target="_blank">📄 Abrir</a>` 
+                        : '<span class="not-available">-</span>';
+
+                    row.innerHTML = `
+                        <td><strong>${item.aluno}</strong></td>
+                        <td><span class="cpf-display">${formatarCPF(item.cpf)}</span></td>
+                        <td>${linkAnuidade}</td>
+                        <td>${linkTaxa}</td>
+                        <td>${linkParanaense}</td>
+                    `;
+                    body.appendChild(row);
+                });
+                table.classList.add('active');
+                noResults.classList.remove('active');
+            } else {
+                resultCount.textContent = 'Nenhum resultado';
+                table.classList.remove('active');
+                noResults.classList.add('active');
+            }
+        }
+
+        // Permitir busca ao apertar Enter
+        document.getElementById('cpfInput').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                buscar();
+            }
+        });
+
+        // Limpar resultados ao limpar o input
+        document.getElementById('cpfInput').addEventListener('input', function () {
+            if (this.value === '') {
+                document.getElementById('resultsSection').classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
